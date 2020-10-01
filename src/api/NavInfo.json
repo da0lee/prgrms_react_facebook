@@ -1,0 +1,49 @@
+{
+  "navInfo": [
+    {
+      "id": "1",
+      "path": "/login",
+      "navItem": "로그인",
+      "img": {
+        "alt": "",
+        "src": ""
+      }
+    },
+    {
+      "id": "2",
+      "path": "/login",
+      "navItem": "알버스",
+      "img": {
+        "alt": "",
+        "src": ""
+      }
+    },
+    {
+      "id": "3",
+      "path": "/signup",
+      "navItem": "회원가입",
+      "img": {
+        "alt": "",
+        "src": ""
+      }
+    },
+    {
+      "id": "4",
+      "path": "/u/1",
+      "navItem": "",
+      "img": {
+        "alt": "user image",
+        "src": "https://s3.ap-northeast-2.amazonaws.com/grepp-cloudfront/programmers_imgs/learn/course9872/instructor_harry.png"
+      }
+    },
+    {
+      "id": "5",
+      "path": "/",
+      "navItem": "로그아웃",
+      "img": {
+        "alt": "",
+        "src": ""
+      }
+    }
+  ]
+}

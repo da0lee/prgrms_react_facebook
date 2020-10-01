@@ -1,0 +1,30 @@
+{
+  "name": "prgrms-rct-5",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/learn-programmers/prgrms-rct-5.git",
+  "author": "ddayooung <dimmaculatey@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "^7.21.2",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.1.2"
+  },
+  "scripts": {
+    "format": "prettier --write \"./**/*.{js,html,css}\"",
+    "dev": "parcel index.html"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "styled-jsx": "^3.3.0"
+  }
+}

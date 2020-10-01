@@ -1,0 +1,34 @@
+{
+  "signup_input": [
+    {
+      "type": "email",
+      "placeholder": "Email",
+      "min-length": "",
+      "required": true
+    },
+    {
+      "type": "text",
+      "placeholder": "Your Name",
+      "min-length": "",
+      "required": true
+    },
+    {
+      "type": "file",
+      "placeholder": "Profile",
+      "min-length": "",
+      "required": false
+    },
+    {
+      "type": "password",
+      "placeholder": "Password",
+      "min-length": "5",
+      "required": true
+    },
+    {
+      "type": "password",
+      "placeholder": "Repeat your password",
+      "min-length": "",
+      "required": true
+    }
+  ]
+}

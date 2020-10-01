@@ -1,0 +1,16 @@
+{
+  "login_input": [
+    {
+      "type": "email",
+      "placeholder": "Email",
+      "min-length": "",
+      "required": true
+    },
+    {
+      "type": "password",
+      "placeholder": "Password",
+      "min-length": "",
+      "required": true
+    }
+  ]
+}
