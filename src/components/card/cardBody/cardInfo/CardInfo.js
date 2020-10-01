@@ -3,19 +3,17 @@ import css from 'styled-jsx/css';
 import ThumbCount from './thumbCount';
 import CommentCount from './CommentCount';
 
-class CardInfo extends Component {
-  render() {
-    return (
-      <>
-        <div className="card-info">
-          <ThumbCount />
-          <CommentCount />
-        </div>
-        <style jsx>{StyledCardInfo}</style>
-      </>
-    );
-  }
-}
+const CardInfo = ({ post }) => {
+  return (
+    <>
+      <div className="card-info">
+        <ThumbCount post={post} />
+        <CommentCount post={post} />
+      </div>
+      <style jsx>{StyledCardInfo}</style>
+    </>
+  );
+};
 
 const StyledCardInfo = css`
   :global(.card .card-info) {

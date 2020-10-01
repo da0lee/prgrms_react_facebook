@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class CommentCount extends Component {
-  render() {
-    return (
-      <span className="comment-count">
-        <i className="far fa-comment-alt">3 개</i>
-      </span>
-    );
-  }
-}
+const CommentCount = ({ post }) => {
+  const { commentList } = post;
+
+  return (
+    <span className="comment-count">
+      <i className="far fa-comment-alt">{`${commentList.length} 개`}</i>
+    </span>
+  );
+};
 
 export default CommentCount;

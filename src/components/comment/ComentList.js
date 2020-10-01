@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import css from 'styled-jsx/css';
 import CommentItem from './CommentItem';
 
-const CommentList = ({ posts }) => {
-  const comments = posts.map((post) => post.commentList).flat();
+const CommentList = ({ post }) => {
+  const comments = post.commentList;
 
   return (
     <>

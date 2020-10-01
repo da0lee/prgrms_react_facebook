@@ -4,6 +4,7 @@ import css from 'styled-jsx/css';
 const CommentItem = ({ comment }) => {
   const { writer, createAt, contents } = comment;
   const { name } = writer;
+
   return (
     <>
       <li className="comment">
