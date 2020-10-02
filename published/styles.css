@@ -73,12 +73,12 @@ nav.navbar.bg-blue {
   margin-bottom: 100px;
 }
 
-/* .card {
+.card {
   padding: 0;
   margin-top: 50px;
   border: none;
   border-radius: 0.5rem;
-} */
+}
 .card .card-body {
   padding: 40px;
 }

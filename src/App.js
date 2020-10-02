@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { DefaultLayout, PublicLayout } from './layouts';
 import { Home, Login, SignUp } from './pages';
+import { user as userInfo } from './api/User.json';
 import { posts as postList } from './api/Posts.json';
 
 const App = () => {
+  const [user, setUSer] = useState(userInfo);
   const [posts, setPosts] = useState(postList);
 
-  const HomePage = () => <Home posts={posts} />;
+  const HomePage = () => <Home user={user} posts={posts} />;
   return (
     <BrowserRouter>
       <Switch>

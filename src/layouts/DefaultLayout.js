@@ -9,7 +9,7 @@ const DefaultLayout = ({ component: Component, className, ...rest }) => {
       render={(props) => (
         <>
           <Header />
-          <div className={className ? 'container ' + className : 'container'}>
+          <div className={className ? `${className} container` : 'container'}>
             <Component {...props} />
           </div>
         </>

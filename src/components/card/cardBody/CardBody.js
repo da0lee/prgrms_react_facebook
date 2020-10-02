@@ -21,10 +21,10 @@ const CardBody = ({ post }) => {
 };
 
 const StyledCardBody = css`
-  .card .card-body {
+  :global(.card .card-body) {
     padding: 40px;
   }
-  .card .card-text {
+  :global(.card .card-text) {
     padding-top: 20px;
     white-space: pre-wrap;
   }

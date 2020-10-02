@@ -2,15 +2,15 @@ import React from 'react';
 import css from 'styled-jsx/css';
 import CommentList from '../comment/ComentList';
 import CardBody from './cardBody/CardBody';
-import WirteForm from '../form/writeForm/WirteForm';
+import CommentForm from '../comment/CommentForm';
 
-const Card = ({ className, placeholder, btnText, post }) => {
+const Card = ({ user, placeholder, btnText, post }) => {
   return (
     <>
       <div className="card">
         <CardBody post={post} />
         <CommentList post={post} />
-        <WirteForm className={className} placeholder={placeholder} btnText={btnText} />
+        <CommentForm user={user} placeholder={placeholder} btnText={btnText} />
       </div>
       <style jsx>{StyledCard}</style>
     </>
