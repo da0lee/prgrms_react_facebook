@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { DefaultLayout, PublicLayout } from './layouts';
 import { Home, Login, SignUp } from './pages';
@@ -6,10 +6,34 @@ import { user as userInfo } from './api/User.json';
 import { posts as postList } from './api/Posts.json';
 
 const App = () => {
-  const [user, setUSer] = useState(userInfo);
-  const [posts, setPosts] = useState(postList);
+  const [user, setUser] = useState(userInfo);
+  const [posts, setPosts] = useState([]);
+  const nextSeq = useRef(posts.length + 1);
+  const createAt = new Date().toString();
 
-  const HomePage = () => <Home user={user} posts={posts} />;
+  const onInsertPost = useCallback(
+    (contents) => {
+      const post = {
+        seq: nextSeq.current,
+        writer: {
+          seq: 1,
+          name,
+        },
+        contents,
+        createAt: createAt,
+        likes: 0,
+        comments: 0,
+        likesOfMe: false,
+        commentList: [],
+      };
+
+      setPosts(posts.concat(post));
+      nextSeq.current += 1;
+    },
+    [posts]
+  );
+
+  const HomePage = () => <Home user={user} posts={posts} onInsertPost={onInsertPost} />;
   return (
     <BrowserRouter>
       <Switch>

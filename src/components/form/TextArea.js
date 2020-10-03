@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
 
-const TextArea = ({ placeholder }) => {
+const TextArea = ({ placeholder, contents, onContentsChange }) => {
   return (
     <>
-      <textarea className="form-control input-lg" placeholder={placeholder} spellCheck="false"></textarea>
+      <textarea
+        className="form-control input-lg"
+        placeholder={placeholder}
+        spellCheck="false"
+        value={contents}
+        onChange={onContentsChange}></textarea>
       <style jsx>{StyledTextArea}</style>
     </>
   );

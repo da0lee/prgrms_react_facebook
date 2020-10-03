@@ -1,5 +1,5 @@
 {
-  "signup_input": [
+  "signUpInput": [
     {
       "type": "email",
       "placeholder": "Email",
