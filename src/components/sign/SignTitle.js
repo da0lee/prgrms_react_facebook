@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import css from 'styled-jsx/css';
 class SignTitle extends Component {
   render() {
     const { title } = this.props;
