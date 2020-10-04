@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import css from 'styled-jsx/css';
 import ThumbCount from './thumbCount';
 import CommentCount from './CommentCount';
 
-const CardInfo = ({ post }) => {
+const PostInfo = ({ post }) => {
   return (
     <>
       <div className="card-info">
         <ThumbCount post={post} />
         <CommentCount post={post} />
       </div>
-      <style jsx>{StyledCardInfo}</style>
+      <style jsx>{StyledPostInfo}</style>
     </>
   );
 };
 
-const StyledCardInfo = css`
+const StyledPostInfo = css`
   :global(.card .card-info) {
     height: 20px;
   }
@@ -40,4 +40,4 @@ const StyledCardInfo = css`
   }
 `;
 
-export default CardInfo;
+export default PostInfo;

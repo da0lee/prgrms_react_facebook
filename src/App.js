@@ -7,6 +7,8 @@ import { posts as postList } from './api/Posts.json';
 
 const App = () => {
   const [user, setUser] = useState(userInfo);
+
+  // Post 작성
   const [posts, setPosts] = useState([]);
   const nextSeq = useRef(posts.length + 1);
   const createAt = new Date().toString();
@@ -26,7 +28,7 @@ const App = () => {
         likesOfMe: false,
         commentList: [],
       };
-
+      const getcontents = localStorage.getItem('contents');
       setPosts(posts.concat(post));
       nextSeq.current += 1;
     },
@@ -37,9 +39,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PublicLayout path="/login" component={Login} className="login" />
-        <PublicLayout path="/signup" component={SignUp} className="signup" />
-        <DefaultLayout path="/" component={HomePage} className="posts" />
+        <PublicLayout path="/login" component={Login} />
+        <PublicLayout path="/signup" component={SignUp} />
+        <DefaultLayout path="/" component={HomePage} />
       </Switch>
       <style jsx global>{`
         * {

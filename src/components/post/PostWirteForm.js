@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
-import Btn from '../form/Btn';
-import TextArea from '../form/TextArea';
+import PostBtn from '../form/PostBtn';
+import PostTextArea from '../form/PostTextArea';
 
-const WriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
+const PostWriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
   const [contents, setContents] = useState();
 
   const onContentsChange = useCallback((e) => {
@@ -13,8 +13,9 @@ const WriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
   const onContentsSubmit = useCallback(
     (e) => {
       e.preventDefault();
+      localStorage.setItem('contents', contents);
       onInsertPost(contents);
-      setContents('전송!');
+      setContents('');
     },
     [onInsertPost, contents]
   );
@@ -22,23 +23,23 @@ const WriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
   return (
     <>
       <form className="write-form" onSubmit={onContentsSubmit}>
-        <TextArea
+        <PostTextArea
           placeholder={placeholder}
           onInsertPost={onInsertPost}
           contents={contents}
           onContentsChange={onContentsChange}
         />
-        <Btn btnText={btnText} />
+        <PostBtn btnText={btnText} />
       </form>
-      <style jsx>{StyledWriteForm}</style>
+      <style jsx>{StyledPostWriteForm}</style>
     </>
   );
 };
 
-const StyledWriteForm = css`
+const StyledPostWriteForm = css`
   .write-form {
     margin-bottom: 100px;
   }
 `;
 
-export default WriteForm;
+export default PostWriteForm;

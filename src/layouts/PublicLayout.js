@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import css from 'styled-jsx/css';
 
-const PublicLayout = ({ component: Component, className, ...rest }) => {
+const PublicLayout = ({ component: Component, ...rest }) => {
   return (
     <>
       <Route

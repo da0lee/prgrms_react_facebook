@@ -1,23 +1,23 @@
 import React from 'react';
 import css from 'styled-jsx/css';
 import CommentList from '../comment/ComentList';
-import CardBody from './cardBody/CardBody';
+import PostBody from './postBody/PostBody';
 import CommentForm from '../comment/CommentForm';
 
-const Card = ({ user, placeholder, btnText, post }) => {
+const Post = ({ user, placeholder, btnText, post }) => {
   return (
     <>
       <div className="card">
-        <CardBody post={post} />
+        <PostBody post={post} />
         <CommentList post={post} />
         <CommentForm user={user} placeholder={placeholder} btnText={btnText} />
       </div>
-      <style jsx>{StyledCard}</style>
+      <style jsx>{StyledPost}</style>
     </>
   );
 };
 
-const StyledCard = css`
+const StyledPost = css`
   .card {
     padding: 0;
     margin-top: 50px;
@@ -26,4 +26,4 @@ const StyledCard = css`
   }
 `;
 
-export default Card;
+export default Post;

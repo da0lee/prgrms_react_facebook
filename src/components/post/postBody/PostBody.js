@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import css from 'styled-jsx/css';
-import CardInfo from './cardInfo/CardInfo';
+import PostInfo from './postInfo/PostInfo';
 
-const CardBody = ({ post }) => {
+const PostBody = ({ post }) => {
   const { writer, createAt, contents } = post;
   const { name } = writer;
 
@@ -36,14 +36,14 @@ const CardBody = ({ post }) => {
         <h6 className="card-subtitle text-muted">{ElapsedTime()}</h6>
         <p className="card-text">{contents}</p>
         <hr />
-        <CardInfo post={post} />
+        <PostInfo post={post} />
       </div>
-      <style jsx>{StyledCardBody}</style>
+      <style jsx>{StyledPostBody}</style>
     </>
   );
 };
 
-const StyledCardBody = css`
+const StyledPostBody = css`
   :global(.card .card-body) {
     padding: 40px;
   }
@@ -53,4 +53,4 @@ const StyledCardBody = css`
   }
 `;
 
-export default CardBody;
+export default PostBody;

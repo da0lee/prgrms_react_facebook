@@ -1,21 +1,21 @@
 import React from 'react';
 import css from 'styled-jsx/css';
-import Btn from '../form/Btn';
-import TextArea from '../form/TextArea';
+import PostBtn from '../form/PostBtn';
+import PostTextArea from '../form/PostTextArea';
 
 const CommentForm = ({ placeholder, btnText }) => {
   return (
     <>
       <form className="comment-form">
-        <TextArea placeholder={placeholder} />
-        <Btn btnText={btnText} />
+        <PostTextArea placeholder={placeholder} />
+        <PostBtn btnText={btnText} />
       </form>
-      <style jsx>{StyledWriteForm}</style>
+      <style jsx>{StyledCommentForm}</style>
     </>
   );
 };
 
-const StyledWriteForm = css`
+const StyledCommentForm = css`
   .comment-form {
     margin: 20px;
   }
