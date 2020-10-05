@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
-import PostBtn from '../form/PostBtn';
-import PostTextArea from '../form/PostTextArea';
+import PostBtn from './PostBtn';
+import PostTextArea from './PostTextArea';
 
-const PostWriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
+const PostWriteForm = ({ user, onInsertPost }) => {
   const [contents, setContents] = useState();
 
   const onContentsChange = useCallback((e) => {
@@ -13,7 +13,6 @@ const PostWriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
   const onContentsSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      localStorage.setItem('contents', contents);
       onInsertPost(contents);
       setContents('');
     },
@@ -23,13 +22,8 @@ const PostWriteForm = ({ user, placeholder, btnText, onInsertPost }) => {
   return (
     <>
       <form className="write-form" onSubmit={onContentsSubmit}>
-        <PostTextArea
-          placeholder={placeholder}
-          onInsertPost={onInsertPost}
-          contents={contents}
-          onContentsChange={onContentsChange}
-        />
-        <PostBtn btnText={btnText} />
+        <PostTextArea onInsertPost={onInsertPost} contents={contents} onContentsChange={onContentsChange} />
+        <PostBtn />
       </form>
       <style jsx>{StyledPostWriteForm}</style>
     </>

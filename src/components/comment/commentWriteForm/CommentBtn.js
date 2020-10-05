@@ -1,18 +1,18 @@
 import React from 'react';
 import css from 'styled-jsx/css';
 
-const WriteBtn = ({ btnText }) => {
+const CommentBtn = () => {
   return (
     <>
       <button type="submit" className="btn btn-primary">
-        {btnText}
+        댓글달기
       </button>
-      <style jsx>{StyledBtn}</style>
+      <style jsx>{StyledCommentBtn}</style>
     </>
   );
 };
 
-const StyledBtn = css`
+const StyledCommentBtn = css`
   :global(button.btn) {
     float: right;
     margin-bottom: 0;
@@ -24,4 +24,4 @@ const StyledBtn = css`
   }
 `;
 
-export default WriteBtn;
+export default CommentBtn;

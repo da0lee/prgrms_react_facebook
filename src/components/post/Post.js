@@ -1,16 +1,16 @@
 import React from 'react';
 import css from 'styled-jsx/css';
-import CommentList from '../comment/ComentList';
+import CommentList from '../comment/commentList/ComentList';
 import PostBody from './postBody/PostBody';
-import CommentForm from '../comment/CommentForm';
+import CommentWriteForm from '../comment/commentWriteForm/CommentWriteForm';
 
-const Post = ({ user, placeholder, btnText, post }) => {
+const Post = ({ user, post, onInsertPost }) => {
   return (
     <>
       <div className="card">
         <PostBody post={post} />
         <CommentList post={post} />
-        <CommentForm user={user} placeholder={placeholder} btnText={btnText} />
+        <CommentWriteForm user={user} onInsertPost={onInsertPost} />
       </div>
       <style jsx>{StyledPost}</style>
     </>

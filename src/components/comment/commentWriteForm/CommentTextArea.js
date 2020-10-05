@@ -1,21 +1,21 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import css from 'styled-jsx/css';
 
-const TextArea = ({ placeholder, contents, onContentsChange }) => {
+const CommentsTextArea = ({ comments, onCommentChange }) => {
   return (
     <>
       <textarea
         className="form-control input-lg"
-        placeholder={placeholder}
+        placeholder="댓글을 입력하세요..."
         spellCheck="false"
-        value={contents}
-        onChange={onContentsChange}></textarea>
-      <style jsx>{StyledTextArea}</style>
+        value={comments}
+        onChange={onCommentChange}></textarea>
+      <style jsx>{StyledCommentsTextArea}</style>
     </>
   );
 };
 
-const StyledTextArea = css`
+const StyledCommentsTextArea = css`
   :global(.write-form > textarea.form-control) {
     min-height: 100px;
     line-height: 20px;
@@ -37,4 +37,4 @@ const StyledTextArea = css`
     resize: none;
   }
 `;
-export default TextArea;
+export default CommentsTextArea;
