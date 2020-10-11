@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from 'styled-jsx/css';
+import toggle from '../../../hocs/toggle';
 
-const NavItem = ({ to, text, action }) => {
+const NavItem = ({ to, text, onLogOut }) => {
+  const onLinkClick = (e) => {
+    if (onLogOut) {
+      e.preventDefault();
+      onLogOut();
+    }
+  };
   return (
     <>
       <li className="nav-item">
-        <Link className="nav-link" to={to}>
+        <Link className="nav-link" to={to} onClick={onLinkClick}>
           {text}
         </Link>
       </li>
@@ -38,4 +45,4 @@ const StyledNavItem = css`
   }
 `;
 
-export default NavItem;
+export default toggle(NavItem);

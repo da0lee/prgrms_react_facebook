@@ -3,12 +3,12 @@ import css from 'styled-jsx/css';
 import Logo from './Logo';
 import Nav from './nav/Nav';
 
-const Header = () => {
+const Header = ({ user, onLogOut }) => {
   return (
     <>
       <nav className="navbar fixed-top bg-blue">
         <Logo />
-        <Nav />
+        <Nav user={user} onLogOut={onLogOut} />
       </nav>
       <style jsx>{SteledNavbar}</style>
     </>

@@ -5,7 +5,16 @@ import { Home, Login, SignUp } from './pages';
 import { user as userInfo } from './api/User.json';
 
 const App = () => {
-  const [user, setUser] = useState(userInfo);
+  const [user, setUser] = useState({
+    name: 'harry',
+    profileImageUrl:
+      'https://s3.ap-northeast-2.amazonaws.com/grepp-cloudfront/programmers_imgs/learn/course9872/instructor_harry.png',
+  });
+
+  // 로그아웃
+  const handleLogOut = () => {
+    setUser(undefined);
+  };
 
   // Post 작성
   const [posts, setPosts] = useState([]);
@@ -46,13 +55,19 @@ const App = () => {
     [posts]
   );
 
-  const HomePage = () => <Home user={user} posts={posts} onInsertPost={onInsertPost} />;
   return (
     <BrowserRouter>
       <Switch>
         <PublicLayout path="/login" component={Login} />
         <PublicLayout path="/signup" component={SignUp} />
-        <DefaultLayout path="/" component={HomePage} />
+        <DefaultLayout
+          path="/"
+          posts={posts}
+          onLogOut={handleLogOut}
+          user={user}
+          onInsertPost={onInsertPost}
+          component={Home}
+        />
       </Switch>
       <style jsx global>{`
         * {
