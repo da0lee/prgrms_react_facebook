@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import css from 'styled-jsx/css';
 
 const CommentsTextArea = ({ comments, onCommentChange }) => {
+  let CommentRef = useRef('');
+
   return (
     <>
       <textarea
@@ -9,7 +11,8 @@ const CommentsTextArea = ({ comments, onCommentChange }) => {
         placeholder="댓글을 입력하세요..."
         spellCheck="false"
         value={comments}
-        onChange={onCommentChange}></textarea>
+        onChange={onCommentChange}
+        ref={CommentRef}></textarea>
       <style jsx>{StyledCommentsTextArea}</style>
     </>
   );

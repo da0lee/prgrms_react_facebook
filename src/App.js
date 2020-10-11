@@ -9,33 +9,38 @@ const App = () => {
 
   // Post 작성
   const [posts, setPosts] = useState([]);
+  const localStorage = posts;
   const nextSeq = useRef(posts.length + 1);
   const createAt = new Date().toString();
 
   const onInsertPost = useCallback(
-    (contents, comments) => {
+    (contents) => {
       const { seq, name } = user[0];
-      const post = {
-        seq: nextSeq.current,
-        writer: {
-          seq,
-          name,
+      const post = [
+        {
+          seq: nextSeq.current,
+          writer: {
+            seq,
+            name,
+          },
+          contents,
+          createAt: createAt,
+          likes: 0,
+          comments: 0,
+          likesOfMe: false,
+          commentList: [],
         },
-        contents,
-        createAt: createAt,
-        likes: 0,
-        comments,
-        likesOfMe: false,
-        commentList: [],
-      };
+      ];
       setPosts(posts.concat(post));
       nextSeq.current += 1;
       // Q localStorage 해결 못함
-      if (posts) {
-        localStorage.setItem(name, JSON.stringify(posts));
+      if (nextSeq.current > 0) {
+        localStorage.setItem(name, JSON.stringify(post));
       }
+      console.log(name);
       const getPost = JSON.parse(localStorage.getItem(name));
-      // console.log(getPost);
+      console.log(localStorage.getItem(name));
+      console.log(getPost);
       // setPosts(getPost);
     },
     [posts]

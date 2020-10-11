@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import css from 'styled-jsx/css';
 
 const PostTextArea = ({ contents, onContentsChange }) => {
+  let postInputEl = useRef('');
+  console.log('포스트 : ' + postInputEl.current.value);
   return (
     <>
       <textarea
@@ -9,7 +11,8 @@ const PostTextArea = ({ contents, onContentsChange }) => {
         placeholder="무슨 생각을 하고 계신가요?"
         spellCheck="false"
         value={contents}
-        onChange={onContentsChange}></textarea>
+        onChange={onContentsChange}
+        ref={postInputEl}></textarea>
       <style jsx>{StyledPostTextArea}</style>
     </>
   );

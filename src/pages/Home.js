@@ -7,7 +7,7 @@ const Home = ({ user, posts, onInsertPost }) => {
     <>
       <PostWirteForm user={user} posts={posts} onInsertPost={onInsertPost} />
       {posts.map((post) => (
-        <Post key={post.seq} user={user} post={post} onInsertPost={onInsertPost} />
+        <Post key={post.seq} user={user} post={post} />
       ))}
     </>
   );

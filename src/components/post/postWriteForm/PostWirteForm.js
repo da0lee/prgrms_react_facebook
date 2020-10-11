@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import css from 'styled-jsx/css';
 import PostBtn from './PostBtn';
 import PostTextArea from './PostTextArea';
 
-const PostWriteForm = ({ user, onInsertPost }) => {
+const PostWriteForm = ({ onInsertPost }) => {
   const [contents, setContents] = useState();
 
   const onContentsChange = useCallback((e) => {

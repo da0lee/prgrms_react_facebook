@@ -2,23 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import css from 'styled-jsx/css';
 
-class NavItem extends Component {
-  render() {
-    const { path, navItem, img } = this.props;
-    const { alt, src } = img;
-    return (
-      <>
-        <li className="nav-item">
-          <Link className="nav-link" to={path}>
-            {navItem}
-            {alt && <img alt={alt} scr={src} />}
-          </Link>
-        </li>
-        <style jsx>{StyledNavItem}</style>
-      </>
-    );
-  }
-}
+const NavItem = ({ path, navItem, img }) => {
+  const { alt, src } = img;
+  return (
+    <>
+      <li className="nav-item">
+        <Link className="nav-link" to={path}>
+          {navItem}
+          {alt && <img alt={alt} scr={src} />}
+        </Link>
+      </li>
+      <style jsx>{StyledNavItem}</style>
+    </>
+  );
+};
 
 const StyledNavItem = css`
   :global(.nav .nav-item .nav-link) {

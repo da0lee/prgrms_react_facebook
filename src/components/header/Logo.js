@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import css from 'styled-jsx/css';
 
-class Logo extends Component {
-  render() {
-    return (
-      <>
-        <Link to="/" className="navbar-brand">
-          <i className="fab fa-facebook-square" aria-hidden="true"></i>
-        </Link>
-        <style jsx>{StyledLogo}</style>
-      </>
-    );
-  }
-}
+const Logo = () => {
+  return (
+    <>
+      <Link to="/" className="navbar-brand">
+        <i className="fab fa-facebook-square" aria-hidden="true"></i>
+      </Link>
+      <style jsx>{StyledLogo}</style>
+    </>
+  );
+};
 
 const StyledLogo = css`
   :global(.navbar-brand i.fa-facebook-square) {

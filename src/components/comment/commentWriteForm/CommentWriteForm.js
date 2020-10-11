@@ -8,12 +8,13 @@ const CommentWriteForm = ({ onInsertPost }) => {
 
   const onCommentChange = useCallback((e) => {
     setComments(e.target.value);
-    // console.log('onCommentChange' + e.target.value);
+    console.log(e.target.value);
   }, []);
 
   const onCommentSubmt = useCallback(
     (e) => {
       e.preventDefault();
+      console.log('코멘트 : ' + e.target.value);
       onInsertPost(comments);
       setComments('');
     },
