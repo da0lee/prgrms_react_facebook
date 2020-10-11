@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import css from 'styled-jsx/css';
 
-const NavItem = ({ path, navItem, img }) => {
-  const { alt, src } = img;
+const NavItem = ({ to, text, action }) => {
   return (
     <>
       <li className="nav-item">
-        <Link className="nav-link" to={path}>
-          {navItem}
-          {alt && <img alt={alt} scr={src} />}
+        <Link className="nav-link" to={to}>
+          {text}
         </Link>
       </li>
       <style jsx>{StyledNavItem}</style>

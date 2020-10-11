@@ -1,14 +1,13 @@
 import React from 'react';
-import { navInfo } from '../../../api/NavInfo.json';
 import NavItem from './NavItem';
 
-const Nav = () => {
+const Nav = ({ user }) => {
   return (
     <>
       <ul className="nav">
-        {navInfo.map((data) => (
-          <NavItem key={data.id} {...data} />
-        ))}
+        <NavItem to="/login" text="로그인" show={!user} />
+        <NavItem to="/signup" text="회원가입" show={!user} />
+        <NavItem to="/logout" text="로그아웃" show={user} />
       </ul>
     </>
   );
