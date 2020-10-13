@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import css from 'styled-jsx/css';
 
-const CommentsTextArea = ({ comments, onCommentChange }) => {
+const CommentsTextArea = ({ comments, onAddComment }) => {
   let CommentRef = useRef('');
 
   return (

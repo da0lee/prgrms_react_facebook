@@ -10,7 +10,7 @@ const Post = ({ post, onAddComment, onLikePost }) => {
       <div className="card">
         <PostBody post={post} onLikePost={onLikePost} />
         <CommentList post={post} />
-        <CommentWriteForm onAddComment={onAddComment} />
+        <CommentWriteForm seq={post.seq} onAddComment={onAddComment} />
       </div>
       <style jsx>{StyledPost}</style>
     </>

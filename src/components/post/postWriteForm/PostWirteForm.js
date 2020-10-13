@@ -5,7 +5,11 @@ import PostBtn from './PostBtn';
 const PostWriteForm = ({ onAddPost }) => {
   const [contents, setContents] = useState();
 
-  const handleContentsSubmit = useCallback(
+  const handlePostChange = useCallback((e) => {
+    setContents(e.target.value);
+  }, []);
+
+  const handlePostSubmit = useCallback(
     (e) => {
       e.preventDefault();
       onAddPost(contents);
@@ -14,19 +18,15 @@ const PostWriteForm = ({ onAddPost }) => {
     [onAddPost, contents]
   );
 
-  const handleContentsChange = useCallback((e) => {
-    setContents(e.target.value);
-  }, []);
-
   return (
     <>
-      <form className="write-form" onSubmit={handleContentsSubmit}>
+      <form className="write-form" onSubmit={handlePostSubmit}>
         <textarea
           className="form-control input-lg"
           placeholder="무슨 생각을 하고 계신가요?"
           spellCheck="false"
           value={contents}
-          onChange={handleContentsChange}
+          onChange={handlePostChange}
         />
         <PostBtn type={'post'} />
       </form>

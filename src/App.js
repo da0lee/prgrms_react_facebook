@@ -45,7 +45,6 @@ const App = () => {
 
   // 코멘트 작성
   const handleAddComment = (postSeq, contents) => {
-    setLocalStorageData(USER_POSTS_KEY, posts);
     setPosts(
       posts.map((post) => {
         if (post.seq === postSeq) {
@@ -60,9 +59,10 @@ const App = () => {
           };
           return {
             // 새 코멘트가 가장 위에 가도록 commentList를 [ 새 코멘트, 원 코맨트 배열 ] 순으로 정의
-            commentList: [comment, ...post.comentList],
-            comments: post.commentList.length + 1,
+            // Q 왜 ...post를 commentList, comment 밑으로 내리면 작동이 안되지?
             ...post,
+            commentList: [comment, ...post.commentList],
+            comments: post.commentList.length + 1,
           };
         }
         return post;
@@ -75,14 +75,12 @@ const App = () => {
     const newPosts = posts.splice(0);
     const idx = newPosts.findIndex((v) => v.seq === postSeq);
     const post = newPosts[idx];
-    console.log(postSeq);
     if (!post.likesOfMe) {
       post.likes += 1;
     } else {
       post.likes -= 1;
     }
     post.likesOfMe = !post.likesOfMe;
-    setLocalStorageData(USER_POSTS_KEY, posts);
     setPosts(newPosts);
   };
 
