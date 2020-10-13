@@ -75,6 +75,7 @@ const App = () => {
     const newPosts = posts.splice(0);
     const idx = newPosts.findIndex((v) => v.seq === postSeq);
     const post = newPosts[idx];
+    console.log(postSeq);
     if (!post.likesOfMe) {
       post.likes += 1;
     } else {

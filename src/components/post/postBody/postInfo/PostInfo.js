@@ -4,15 +4,10 @@ import ThumbCount from './thumbCount';
 import CommentCount from './CommentCount';
 
 const PostInfo = ({ post, onLikePost }) => {
-  console.log(post);
-  const handleLikeClick = (e) => {
-    e.preventDefault();
-    onLikePost();
-  };
   return (
     <>
       <div className="card-info">
-        <ThumbCount post={post} onClick={handleLikeClick} />
+        <ThumbCount post={post} onLikePost={onLikePost} />
         <CommentCount post={post} />
       </div>
       <style jsx>{StyledPostInfo}</style>
