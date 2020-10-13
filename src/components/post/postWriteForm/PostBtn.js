@@ -1,11 +1,11 @@
 import React from 'react';
 import css from 'styled-jsx/css';
 
-const PostBtn = () => {
+const PostBtn = ({ type }) => {
   return (
     <>
       <button type="submit" className="btn btn-primary">
-        공유하기
+        {type === 'post' ? '공유하기' : '댓글달기'}
       </button>
       <style jsx>{StyledPostBtn}</style>
     </>
@@ -13,7 +13,7 @@ const PostBtn = () => {
 };
 
 const StyledPostBtn = css`
-  :global(button.btn) {
+  button.btn {
     float: right;
     margin-bottom: 0;
     margin-top: 16px;

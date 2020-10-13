@@ -1,29 +1,34 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
 import PostBtn from './PostBtn';
-import PostTextArea from './PostTextArea';
 
-const PostWriteForm = ({ onInsertPost }) => {
+const PostWriteForm = ({ onAddPost }) => {
   const [contents, setContents] = useState();
 
-  const onContentsChange = useCallback((e) => {
+  const handleContentsSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      onAddPost(contents);
+      setContents('');
+    },
+    [onAddPost, contents]
+  );
+
+  const handleContentsChange = useCallback((e) => {
     setContents(e.target.value);
   }, []);
 
-  const onContentsSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      onInsertPost(contents);
-      setContents('');
-    },
-    [onInsertPost, contents]
-  );
-
   return (
     <>
-      <form className="write-form" onSubmit={onContentsSubmit}>
-        <PostTextArea onInsertPost={onInsertPost} contents={contents} onContentsChange={onContentsChange} />
-        <PostBtn />
+      <form className="write-form" onSubmit={handleContentsSubmit}>
+        <textarea
+          className="form-control input-lg"
+          placeholder="무슨 생각을 하고 계신가요?"
+          spellCheck="false"
+          value={contents}
+          onChange={handleContentsChange}
+        />
+        <PostBtn type={'post'} />
       </form>
       <style jsx>{StyledPostWriteForm}</style>
     </>
@@ -33,6 +38,27 @@ const PostWriteForm = ({ onInsertPost }) => {
 const StyledPostWriteForm = css`
   .write-form {
     margin-bottom: 100px;
+  }
+
+  .write-form > textarea.form-control {
+    min-height: 100px;
+    line-height: 20px;
+    padding: 20px;
+    font-size: 18px;
+    resize: none;
+    border: none;
+    border-radius: 0.5rem;
+    transition: box-shadow ease-in-out 1s;
+  }
+  .write-form > textarea:focus {
+    box-shadow: #999999 0 0 50px;
+  }
+
+  .comment-form > textarea.form-control {
+    min-height: 20px;
+    line-height: 20px;
+    border-radius: 0.5rem;
+    resize: none;
   }
 `;
 

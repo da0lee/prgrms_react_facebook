@@ -4,13 +4,13 @@ import CommentList from '../comment/commentList/ComentList';
 import PostBody from './postBody/PostBody';
 import CommentWriteForm from '../comment/commentWriteForm/CommentWriteForm';
 
-const Post = ({ user, post, onInsertPost }) => {
+const Post = ({ post, onAddComment, onLikePost }) => {
   return (
     <>
       <div className="card">
-        <PostBody post={post} />
+        <PostBody post={post} onLikePost={onLikePost} />
         <CommentList post={post} />
-        <CommentWriteForm user={user} onInsertPost={onInsertPost} />
+        <CommentWriteForm onAddComment={onAddComment} />
       </div>
       <style jsx>{StyledPost}</style>
     </>

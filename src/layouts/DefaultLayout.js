@@ -6,12 +6,20 @@ const DefaultLayout = ({ component: Component, user, onLogOut, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) => (
+      render={(matchProps) => (
         <>
           <Header user={user} onLogOut={onLogOut} />
           <div className="posts container">
-            <Component {...props} {...rest} />
+            <Component {...matchProps} {...rest} />
           </div>
+
+          <style jsx global>
+            {`
+              .container {
+                max-width: 600px;
+              }
+            `}
+          </style>
         </>
       )}
     />

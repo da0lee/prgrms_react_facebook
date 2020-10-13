@@ -2,12 +2,12 @@ import React from 'react';
 import PostWirteForm from '../components/post/postWriteForm/PostWirteForm';
 import Post from '../components/post/Post';
 
-const Home = ({ user, posts, onInsertPost }) => {
+const Home = ({ posts, onAddPost, onAddComment, onLikePost }) => {
   return (
     <>
-      <PostWirteForm user={user} posts={posts} onInsertPost={onInsertPost} />
+      <PostWirteForm posts={posts} onAddPost={onAddPost} />
       {posts.map((post) => (
-        <Post key={post.seq} user={user} post={post} />
+        <Post key={post.seq} post={post} onAddComment={onAddComment} onLikePost={onLikePost} />
       ))}
     </>
   );

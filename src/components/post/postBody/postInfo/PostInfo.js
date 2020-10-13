@@ -3,11 +3,16 @@ import css from 'styled-jsx/css';
 import ThumbCount from './thumbCount';
 import CommentCount from './CommentCount';
 
-const PostInfo = ({ post }) => {
+const PostInfo = ({ post, onLikePost }) => {
+  console.log(post);
+  const handleLikeClick = (e) => {
+    e.preventDefault();
+    onLikePost();
+  };
   return (
     <>
       <div className="card-info">
-        <ThumbCount post={post} />
+        <ThumbCount post={post} onClick={handleLikeClick} />
         <CommentCount post={post} />
       </div>
       <style jsx>{StyledPostInfo}</style>

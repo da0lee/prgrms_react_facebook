@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { DefaultLayout, PublicLayout } from './layouts';
 import { Home, Login, SignUp } from './pages';
@@ -24,7 +24,7 @@ const App = () => {
   // Post 작성
   const [posts, setPosts] = useState(postMockStore.getPostFromLS());
 
-  const onAddPost = (contents) => {
+  const handleAddPost = (contents) => {
     const newPost = {
       seq: posts.length,
       writer: {
@@ -40,65 +40,54 @@ const App = () => {
       commentList: [],
     };
     // newPost, posts 원배열 복사
-    setPosts([newPost, ...posts], () => {
-      setLocalStorageData(USER_POSTS_KEY, posts);
-    });
+    setPosts([newPost, ...posts]);
   };
-
-  const onInsertPost = useCallback(
-    (contents) => {
-      const { seq, name } = user[0];
-      const post = [
-        {
-          seq: post.length + 1,
-          writer: {
-            seq,
-            name,
-          },
-          contents,
-          createAt: new Date(),
-          likes: 0,
-          comments: 0,
-          likesOfMe: false,
-          commentList: [],
-        },
-      ];
-      setPosts(posts.concat(post));
-      // Q localStorage 해결 못함
-    },
-    [posts]
-  );
 
   // 코멘트 작성
-  const onAddComment = (postseq, contents) => {
+  const handleAddComment = (postSeq, contents) => {
+    setLocalStorageData(USER_POSTS_KEY, posts);
     setPosts(
-      (posts) => ({
-        posts: posts.map((post) => {
-          if (post.seq === postseq) {
-            const comment = {
-              seq: post.commentList.length,
-              writer: {
-                seq: post.commentList.length,
-                name: user.name,
-              },
-              contents,
-              createAt: new Date(),
-            };
-            return {
-              // 새 코멘트가 가장 위에 가도록 commentList를 [ 새 코멘트, 원 코맨트 배열 ] 순으로 정의
-              commentList: [comment, ...post.comentList],
-              comments: post.commentList.length + 1,
-              ...post,
-            };
-          }
-          return post;
-        }),
-      }),
-      () => {
-        setLocalStorageData(USER_POSTS_KEY, posts);
-      }
+      posts.map((post) => {
+        if (post.seq === postSeq) {
+          const comment = {
+            seq: post.commentList.length,
+            writer: {
+              seq: user.seq,
+              name: user.name,
+            },
+            contents,
+            createAt: new Date(),
+          };
+          return {
+            // 새 코멘트가 가장 위에 가도록 commentList를 [ 새 코멘트, 원 코맨트 배열 ] 순으로 정의
+            commentList: [comment, ...post.comentList],
+            comments: post.commentList.length + 1,
+            ...post,
+          };
+        }
+        return post;
+      })
     );
   };
+
+  // 좋아요
+  const handleLikePost = (postSeq) => {
+    const newPosts = posts.splice(0);
+    const idx = newPosts.findIndex((v) => v.seq === postSeq);
+    const post = newPosts[idx];
+    if (!post.likesOfMe) {
+      post.likes += 1;
+    } else {
+      post.likes -= 1;
+    }
+    post.likesOfMe = !post.likesOfMe;
+    setLocalStorageData(USER_POSTS_KEY, posts);
+    setPosts(newPosts);
+  };
+
+  useEffect(() => {
+    setLocalStorageData(USER_POSTS_KEY, posts);
+  }, [posts]);
 
   return (
     <BrowserRouter>
@@ -108,9 +97,11 @@ const App = () => {
         <DefaultLayout
           path="/"
           posts={posts}
-          onLogOut={handleLogOut}
           user={user}
-          onInsertPost={onInsertPost}
+          onLogOut={handleLogOut}
+          onAddPost={handleAddPost}
+          onAddComment={handleAddComment}
+          onLikePost={handleLikePost}
           component={Home}
         />
       </Switch>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import css from 'styled-jsx/css';
 import PostInfo from './postInfo/PostInfo';
 
-const PostBody = ({ post }) => {
+const PostBody = ({ post, onLikePost }) => {
   const { writer, createAt, contents } = post;
   const { name } = writer;
 
@@ -36,7 +36,7 @@ const PostBody = ({ post }) => {
         <h6 className="card-subtitle text-muted">{ElapsedTime()}</h6>
         <p className="card-text">{contents}</p>
         <hr />
-        <PostInfo post={post} />
+        <PostInfo post={post} onLikePost={onLikePost} />
       </div>
       <style jsx>{StyledPostBody}</style>
     </>
