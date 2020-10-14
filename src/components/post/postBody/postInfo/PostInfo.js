@@ -1,6 +1,6 @@
 import React from 'react';
 import css from 'styled-jsx/css';
-import ThumbCount from './thumbCount';
+import ThumbCount from './ThumbCount';
 import CommentCount from './CommentCount';
 
 const PostInfo = ({ post, onLikePost }) => {

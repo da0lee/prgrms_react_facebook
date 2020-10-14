@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
-import PostBtn from './PostBtn';
 
 const PostWriteForm = ({ onAddPost }) => {
   const [contents, setContents] = useState();
@@ -28,7 +27,9 @@ const PostWriteForm = ({ onAddPost }) => {
           value={contents}
           onChange={handlePostChange}
         />
-        <PostBtn type={'post'} />
+        <button type="submit" className="btn btn-primary">
+          공유하기
+        </button>
       </form>
       <style jsx>{StyledPostWriteForm}</style>
     </>
@@ -50,6 +51,7 @@ const StyledPostWriteForm = css`
     border-radius: 0.5rem;
     transition: box-shadow ease-in-out 1s;
   }
+
   .write-form > textarea:focus {
     box-shadow: #999999 0 0 50px;
   }
@@ -59,6 +61,16 @@ const StyledPostWriteForm = css`
     line-height: 20px;
     border-radius: 0.5rem;
     resize: none;
+  }
+
+  button.btn {
+    float: right;
+    margin-bottom: 0;
+    margin-top: 16px;
+    background-color: #3b5999;
+    color: #fffffe;
+    border: none;
+    font-weight: 800;
   }
 `;
 

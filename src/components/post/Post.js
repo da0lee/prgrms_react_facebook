@@ -1,8 +1,8 @@
 import React from 'react';
 import css from 'styled-jsx/css';
-import CommentList from '../comment/commentList/ComentList';
+import CommentList from '../comment/commentList/CommentList';
 import PostBody from './postBody/PostBody';
-import CommentWriteForm from '../comment/commentWriteForm/CommentWriteForm';
+import CommentForm from '../comment/CommentForm/CommentForm';
 
 const Post = ({ post, onAddComment, onLikePost }) => {
   return (
@@ -10,7 +10,7 @@ const Post = ({ post, onAddComment, onLikePost }) => {
       <div className="card">
         <PostBody post={post} onLikePost={onLikePost} />
         <CommentList post={post} />
-        <CommentWriteForm seq={post.seq} onAddComment={onAddComment} />
+        <CommentForm seq={post.seq} onAddComment={onAddComment} />
       </div>
       <style jsx>{StyledPost}</style>
     </>

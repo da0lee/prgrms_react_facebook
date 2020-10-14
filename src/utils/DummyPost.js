@@ -1,7 +1,8 @@
-import { getLocalStorageData } from './util';
-import { USER_POSTS_KEY } from './userPostsKey';
+import { getLocalStorageData } from './Storage';
 
-export default class PostMockStore {
+export const USER_POSTS_KEY = 'Auth';
+
+export default class DummyPost {
   constructor() {
     this.posts = [];
   }
@@ -15,7 +16,7 @@ export default class PostMockStore {
       console.log(`Cannot set posts value..${err}`);
     }
   }
-  getPostFromLS = () => {
+  getPost = () => {
     this.posts = getLocalStorageData(USER_POSTS_KEY);
     return this.posts;
   };

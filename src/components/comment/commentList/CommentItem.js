@@ -1,39 +1,17 @@
 import React from 'react';
 import css from 'styled-jsx/css';
+import { DateCreated } from '../../../utils/Helper';
 
 const CommentItem = ({ comment }) => {
   const { writer, createAt, contents } = comment;
   const { name } = writer;
-
-  const ElapsedTime = () => {
-    const now = new Date();
-    const timeValue = new Date(createAt);
-
-    const betweenTime = Math.floor((now.getTime() - timeValue.getTime()) / 1000 / 60);
-    if (betweenTime < 1) return '방금 전';
-    if (betweenTime < 60) {
-      return `${betweenTime}분 전`;
-    }
-
-    const betweenTimeHour = Math.floor(betweenTime / 60);
-    if (betweenTimeHour < 24) {
-      return `${betweenTimeHour}시간 전`;
-    }
-
-    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-    if (betweenTimeDay < 365) {
-      return `${betweenTimeDay}일 전`;
-    }
-
-    return `${Math.floor(betweenTimeDay / 365)}년 전`;
-  };
 
   return (
     <>
       <li className="comment">
         <div className="comment-info">
           <h6 className="comment-writer">{name}</h6>
-          <div className="comment-datetime">{ElapsedTime()}</div>
+          <div className="comment-datetime">{DateCreated(createAt)}</div>
         </div>
         <p className="comment-text">{contents}</p>
       </li>

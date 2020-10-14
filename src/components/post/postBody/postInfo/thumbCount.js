@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const ThumbCount = ({ post, onLikePost }) => {
   const { likes } = post;
@@ -9,7 +9,7 @@ const ThumbCount = ({ post, onLikePost }) => {
 
   return (
     <button type="button" className="thumb-count" onClick={handleLikeClick}>
-      <i className="far fa-thumbs-up">{`${likes} 개`}</i>
+      <i className={likes ? 'far fa-thumbs-up on' : 'far fa-thumbs-up'}>{`${likes} 개`}</i>
     </button>
   );
 };

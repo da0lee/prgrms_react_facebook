@@ -1,12 +1,11 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { DefaultLayout, PublicLayout } from './layouts';
 import { Home, Login, SignUp } from './pages';
-import { setLocalStorageData } from './utils/util';
-import { USER_POSTS_KEY } from './utils/userPostsKey';
-import PostMockStore from './utils/postMockStore';
+import { setLocalStorageData } from './utils/Storage';
+import DummyPost, { USER_POSTS_KEY } from './utils/DummyPost';
 
-const postMockStore = new PostMockStore();
+const dummyPost = new DummyPost();
 const App = () => {
   const [user, setUser] = useState({
     seq: 0,
@@ -22,7 +21,7 @@ const App = () => {
   };
 
   // Post 작성
-  const [posts, setPosts] = useState(postMockStore.getPostFromLS());
+  const [posts, setPosts] = useState(dummyPost.getPost());
 
   const handleAddPost = (contents) => {
     const newPost = {
@@ -75,11 +74,7 @@ const App = () => {
     const newPosts = posts.splice(0);
     const idx = newPosts.findIndex((v) => v.seq === postSeq);
     const post = newPosts[idx];
-    if (!post.likesOfMe) {
-      post.likes += 1;
-    } else {
-      post.likes -= 1;
-    }
+    !post.likesOfMe ? (post.likes += 1) : (post.likes -= 1);
     post.likesOfMe = !post.likesOfMe;
     setPosts(newPosts);
   };

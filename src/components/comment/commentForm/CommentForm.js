@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
-import CommentBtn from './CommentBtn';
 
-const CommentWriteForm = ({ seq, onAddComment }) => {
+const CommentForm = ({ seq, onAddComment }) => {
   const [comment, setComment] = useState();
 
   const handleCommentsChange = useCallback((e) => {
@@ -28,14 +27,16 @@ const CommentWriteForm = ({ seq, onAddComment }) => {
           value={comment}
           onChange={handleCommentsChange}
         />
-        <CommentBtn />
+        <button type="submit" className="btn btn-primary">
+          댓글달기
+        </button>
       </form>
-      <style jsx>{StyledCommentWriteForm}</style>
+      <style jsx>{StyledCommentForm}</style>
     </>
   );
 };
 
-const StyledCommentWriteForm = css`
+const StyledCommentForm = css`
   .comment-form {
     margin: 20px;
   }
@@ -59,6 +60,15 @@ const StyledCommentWriteForm = css`
     border-radius: 0.5rem;
     resize: none;
   }
+  button.btn {
+    float: right;
+    margin-bottom: 0;
+    margin-top: 16px;
+    background-color: #3b5999;
+    color: #fffffe;
+    border: none;
+    font-weight: 800;
+  }
 `;
 
-export default CommentWriteForm;
+export default CommentForm;
