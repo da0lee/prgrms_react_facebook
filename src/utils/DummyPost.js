@@ -1,6 +1,6 @@
 import { getLocalStorageData } from './Storage';
 
-export const USER_POSTS_KEY = 'Auth';
+export const KEY = 'Auth';
 
 export default class DummyPost {
   constructor() {
@@ -16,8 +16,8 @@ export default class DummyPost {
       console.log(`Cannot set posts value..${err}`);
     }
   }
-  getPost = () => {
-    this.posts = getLocalStorageData(USER_POSTS_KEY);
+  getPosts = () => {
+    this.posts = getLocalStorageData(KEY);
     return this.posts;
   };
 }

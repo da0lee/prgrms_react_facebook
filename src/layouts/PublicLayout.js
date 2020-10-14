@@ -7,9 +7,9 @@ const PublicLayout = ({ component: Component, ...rest }) => {
     <>
       <Route
         {...rest}
-        render={(props) => (
+        render={(matchProps) => (
           <div className="sign form container">
-            <Component {...props} />
+            <Component {...matchProps} />
           </div>
         )}
       />

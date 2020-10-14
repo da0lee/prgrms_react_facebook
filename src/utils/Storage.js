@@ -1,11 +1,11 @@
-export const getLocalStorageData = (ID) => {
+export const getLocalStorageData = (key) => {
   try {
-    return localStorage.getItem(ID) ? JSON.parse(localStorage.getItem(ID)) : [];
+    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
   } catch (err) {
     console.log(`Cannot find data from LocalStorage..${err}`);
   }
 };
 
-export const setLocalStorageData = (ID, data) => {
-  localStorage.setItem(ID, JSON.stringify(data));
+export const setLocalStorageData = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
 };

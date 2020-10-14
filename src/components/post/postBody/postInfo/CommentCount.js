@@ -1,11 +1,11 @@
 import React from 'react';
 
 const CommentCount = ({ post }) => {
-  const { commentList } = post;
+  const { comments } = post;
 
   return (
     <span className="comment-count">
-      <i className="far fa-comment-alt">{`${commentList.length} 개`}</i>
+      <i className="far fa-comment-alt">{comments} 개</i>
     </span>
   );
 };
