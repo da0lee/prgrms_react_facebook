@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import Header from '../components/header/Header';
-import { setLocalStorageData } from '../utils/Storage';
-import DummyPost, { KEY } from '../utils/DummyPost';
-
-const dummyPost = new DummyPost();
+import { set, get } from '../service/postService';
 
 const DefaultLayout = ({ component: Component }) => {
   const [user, setUser] = useState({
@@ -15,11 +12,7 @@ const DefaultLayout = ({ component: Component }) => {
     isLogin: true,
   });
 
-  const [posts, setPosts] = useState(dummyPost.getPosts());
-
-  useEffect(() => {
-    setLocalStorageData(KEY, posts);
-  }, [posts]);
+  const [posts, setPosts] = useState(get());
 
   // 로그아웃
   const handleLogOut = () => {
@@ -42,7 +35,9 @@ const DefaultLayout = ({ component: Component }) => {
       comments: 0,
       commentList: [],
     };
-    setPosts([newPost, ...posts]);
+    setPosts((prevState) => {
+      return [newPost, ...posts];
+    });
   };
 
   // Comment 작성
@@ -61,7 +56,7 @@ const DefaultLayout = ({ component: Component }) => {
       ...post.commentList,
     ];
     post.comments = post.commentList.length;
-    setPosts(newPosts);
+    setPosts((prevState) => newPosts);
   };
 
   // 좋아요
@@ -71,8 +66,12 @@ const DefaultLayout = ({ component: Component }) => {
     const post = newPosts[idx];
     !post.likesOfMe ? (post.likes += 1) : (post.likes -= 1);
     post.likesOfMe = !post.likesOfMe;
-    setPosts(newPosts);
+    setPosts((prevState) => newPosts);
   };
+
+  useEffect(() => {
+    set(posts);
+  }, [posts]);
 
   return (
     <Route

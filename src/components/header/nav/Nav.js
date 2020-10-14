@@ -15,4 +15,4 @@ const Nav = ({ user, onLogOut }) => {
   );
 };
 
-export default Nav;
+export default React.memo(Nav);

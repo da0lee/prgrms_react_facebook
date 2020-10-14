@@ -45,4 +45,4 @@ const StyledNavItem = css`
   }
 `;
 
-export default toggle(NavItem);
+export default React.memo(toggle(NavItem));

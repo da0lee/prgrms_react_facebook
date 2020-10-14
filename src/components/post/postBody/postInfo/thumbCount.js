@@ -14,4 +14,4 @@ const ThumbCount = ({ post, onLikePost }) => {
   );
 };
 
-export default ThumbCount;
+export default React.memo(ThumbCount);

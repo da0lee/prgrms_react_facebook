@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import css from 'styled-jsx/css';
 import PostInfo from './postInfo/PostInfo';
-import { DateCreated } from '../../../utils/Helper';
+import { DateCreated } from '../../../utils/helper';
 
 const PostBody = ({ post, onLikePost }) => {
   const { writer, createAt, contents } = post;
@@ -31,4 +31,4 @@ const StyledPostBody = css`
   }
 `;
 
-export default PostBody;
+export default React.memo(PostBody);

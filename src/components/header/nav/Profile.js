@@ -26,4 +26,4 @@ const StyledProfile = css`
   }
 `;
 
-export default toggle(Profile);
+export default React.memo(toggle(Profile));

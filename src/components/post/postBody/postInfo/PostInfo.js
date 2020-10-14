@@ -40,4 +40,4 @@ const StyledPostInfo = css`
   }
 `;
 
-export default PostInfo;
+export default React.memo(PostInfo);

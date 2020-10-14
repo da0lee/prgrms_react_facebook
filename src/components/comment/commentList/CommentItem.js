@@ -1,6 +1,6 @@
 import React from 'react';
 import css from 'styled-jsx/css';
-import { DateCreated } from '../../../utils/Helper';
+import { DateCreated } from '../../../utils/helper';
 
 const CommentItem = ({ comment }) => {
   const { writer, createAt, contents } = comment;
@@ -34,4 +34,4 @@ const StyledCommentItem = css`
     padding-top: 20px;
   }
 `;
-export default CommentItem;
+export default React.memo(CommentItem);

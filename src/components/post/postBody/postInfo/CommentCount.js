@@ -10,4 +10,4 @@ const CommentCount = ({ post }) => {
   );
 };
 
-export default CommentCount;
+export default React.memo(CommentCount);
