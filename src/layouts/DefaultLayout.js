@@ -14,6 +14,10 @@ const DefaultLayout = ({ component: Component }) => {
 
   const [posts, setPosts] = useState(get());
 
+  useEffect(() => {
+    set(posts);
+  }, [posts]);
+
   // 로그아웃
   const handleLogOut = () => {
     setUser(undefined);
@@ -68,10 +72,6 @@ const DefaultLayout = ({ component: Component }) => {
     post.likesOfMe = !post.likesOfMe;
     setPosts((prevState) => newPosts);
   };
-
-  useEffect(() => {
-    set(posts);
-  }, [posts]);
 
   return (
     <Route

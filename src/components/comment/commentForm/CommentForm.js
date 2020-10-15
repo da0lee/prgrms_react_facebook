@@ -1,8 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import css from 'styled-jsx/css';
+import { useAutoFormHeight } from '../../../hooks/useAutoFormHeight';
 
 const CommentForm = ({ seq, onAddComment }) => {
   const [comment, setComment] = useState();
+  const RefCommentTextArea = useRef(null);
+  const { handleFormHeightSubmit } = useAutoFormHeight(RefCommentTextArea);
 
   const handleCommentsChange = useCallback((e) => {
     setComment(e.target.value);
@@ -12,20 +15,23 @@ const CommentForm = ({ seq, onAddComment }) => {
     (e) => {
       e.preventDefault();
       onAddComment(seq, comment);
+      handleFormHeightSubmit(e);
       setComment('');
     },
-    [onAddComment, comment]
+    [onAddComment, comment, handleFormHeightSubmit]
   );
 
   return (
     <>
       <form className="comment-form" onSubmit={handleCommentSubmit}>
         <textarea
+          ref={RefCommentTextArea}
           className="form-control input-lg"
           placeholder="댓글을 입력하세요..."
           spellCheck="false"
           value={comment}
           onChange={handleCommentsChange}
+          name="comment"
         />
         <button type="submit" className="btn btn-primary">
           댓글달기
@@ -40,16 +46,7 @@ const StyledCommentForm = css`
   .comment-form {
     margin: 20px;
   }
-  .write-form > textarea.form-control {
-    min-height: 100px;
-    line-height: 20px;
-    padding: 20px;
-    font-size: 18px;
-    resize: none;
-    border: none;
-    border-radius: 0.5rem;
-    transition: box-shadow ease-in-out 1s;
-  }
+
   .write-form > textarea:focus {
     box-shadow: #999999 0 0 50px;
   }
@@ -59,6 +56,7 @@ const StyledCommentForm = css`
     line-height: 20px;
     border-radius: 0.5rem;
     resize: none;
+    overflow-y: hidden;
   }
   button.btn {
     float: right;
