@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import css from 'styled-jsx/css';
 
-const PostWriteForm = ({ onAddPost }) => {
+const PostForm = ({ onAddPost }) => {
   const [contents, setContents] = useState();
 
   const handlePostChange = useCallback((e) => {
@@ -31,12 +31,12 @@ const PostWriteForm = ({ onAddPost }) => {
           공유하기
         </button>
       </form>
-      <style jsx>{StyledPostWriteForm}</style>
+      <style jsx>{StyledPostForm}</style>
     </>
   );
 };
 
-const StyledPostWriteForm = css`
+const StyledPostForm = css`
   .write-form {
     margin-bottom: 100px;
   }
@@ -74,4 +74,4 @@ const StyledPostWriteForm = css`
   }
 `;
 
-export default PostWriteForm;
+export default PostForm;
