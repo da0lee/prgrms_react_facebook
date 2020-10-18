@@ -4,11 +4,12 @@ import ThumbCount from './ThumbCount';
 import CommentCount from './CommentCount';
 
 const PostInfo = ({ post, onLikePost }) => {
+  const { comments } = post;
   return (
     <>
       <div className="card-info">
         <ThumbCount post={post} onLikePost={onLikePost} />
-        <CommentCount post={post} />
+        <CommentCount comments={comments} />
       </div>
       <style jsx>{StyledPostInfo}</style>
     </>
@@ -40,4 +41,4 @@ const StyledPostInfo = css`
   }
 `;
 
-export default React.memo(PostInfo);
+export default PostInfo;

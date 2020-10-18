@@ -18,6 +18,7 @@ const DefaultLayout = ({ component: Component }) => {
     set(posts);
   }, [posts]);
 
+  console.log(posts);
   // 로그아웃
   const handleLogOut = () => {
     setUser(undefined);
@@ -39,9 +40,7 @@ const DefaultLayout = ({ component: Component }) => {
       comments: 0,
       commentList: [],
     };
-    setPosts((prevState) => {
-      return [newPost, ...posts];
-    });
+    setPosts([newPost, ...posts]);
   };
 
   // Comment 작성
@@ -59,8 +58,9 @@ const DefaultLayout = ({ component: Component }) => {
       },
       ...post.commentList,
     ];
+    console.log(post);
     post.comments = post.commentList.length;
-    setPosts((prevState) => newPosts);
+    setPosts(newPosts);
   };
 
   // 좋아요
@@ -70,7 +70,7 @@ const DefaultLayout = ({ component: Component }) => {
     const post = newPosts[idx];
     !post.likesOfMe ? (post.likes += 1) : (post.likes -= 1);
     post.likesOfMe = !post.likesOfMe;
-    setPosts((prevState) => newPosts);
+    setPosts(newPosts);
   };
 
   return (
