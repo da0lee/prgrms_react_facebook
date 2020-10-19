@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { DefaultLayout, PublicLayout } from './layouts';
-import { Home, Login, SignUp } from './pages';
+import { Home, Login, SignUp, User } from './pages';
 
 const App = () => {
   return (
@@ -9,6 +9,7 @@ const App = () => {
       <Switch>
         <PublicLayout path="/login" component={Login} />
         <PublicLayout path="/signup" component={SignUp} />
+        <DefaultLayout path="/u/:name" component={User} />
         <DefaultLayout path="/" component={Home} />
       </Switch>
       <style jsx global>{`

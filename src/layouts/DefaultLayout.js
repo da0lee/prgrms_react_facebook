@@ -18,7 +18,6 @@ const DefaultLayout = ({ component: Component }) => {
     set(posts);
   }, [posts]);
 
-  console.log(posts);
   // 로그아웃
   const handleLogOut = () => {
     setUser(undefined);
