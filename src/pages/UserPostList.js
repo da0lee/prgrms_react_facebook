@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from '../components/post/Post';
 
-const User = ({ posts }) => {
+const UserPostList = ({ posts }) => {
   const userName = location.pathname.split('/')[2];
   const userPosts = posts.filter((post) => post.writer.name === userName);
 
@@ -14,4 +14,4 @@ const User = ({ posts }) => {
   );
 };
 
-export default User;
+export default UserPostList;

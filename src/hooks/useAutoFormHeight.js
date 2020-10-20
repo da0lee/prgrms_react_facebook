@@ -14,12 +14,12 @@ export const useAutoFormHeight = (ref) => {
     };
   }, [ref]);
 
-  const handleFormHeightSubmit = useCallback((e) => {
-    const { name, style } = ref.current;
+  const handleResetSubmit = useCallback((e) => {
+    const { style } = ref.current;
 
     e.preventDefault();
-    name === 'post' ? (style.height = '100px') : (style.height = '50px');
+    style.height = 'auto';
   }, []);
 
-  return { handleFormHeightSubmit };
+  return { handleResetSubmit };
 };

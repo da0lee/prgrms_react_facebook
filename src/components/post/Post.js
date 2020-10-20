@@ -5,11 +5,12 @@ import PostBody from './postBody/PostBody';
 import CommentForm from '../comment/CommentForm/CommentForm';
 
 const Post = ({ post, onAddComment, onLikePost }) => {
+  const { commentList } = post;
   return (
     <>
       <div className="card">
         <PostBody post={post} onLikePost={onLikePost} />
-        <CommentList post={post} />
+        <CommentList commentList={commentList} />
         <CommentForm seq={post.seq} onAddComment={onAddComment} />
       </div>
       <style jsx>{StyledPost}</style>

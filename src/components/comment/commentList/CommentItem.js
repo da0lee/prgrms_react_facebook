@@ -1,6 +1,6 @@
 import React from 'react';
 import css from 'styled-jsx/css';
-import { DateCreated } from '../../../utils/helper';
+import { dateCreated } from '../../../utils/helper';
 
 const CommentItem = ({ comment }) => {
   const { writer, createAt, contents } = comment;
@@ -11,7 +11,7 @@ const CommentItem = ({ comment }) => {
       <li className="comment">
         <div className="comment-info">
           <h6 className="comment-writer">{name}</h6>
-          <div className="comment-datetime">{DateCreated(createAt)}</div>
+          <div className="comment-datetime">{dateCreated(createAt)}</div>
         </div>
         <p className="comment-text">{contents}</p>
       </li>

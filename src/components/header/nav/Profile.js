@@ -8,7 +8,7 @@ const Profile = (props) => {
 
   return (
     <li className="nav-item">
-      <Link to={`/u/ ${seq}`} className="nav-link">
+      <Link to={`/u/${seq}`} className="nav-link">
         {profileImageUrl ? <img src={profileImageUrl} alt="" /> : false} {name}
       </Link>
       <style jsx>{StyledProfile}</style>

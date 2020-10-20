@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { signUpAPI } from '../config';
 import css from 'styled-jsx/css';
 
 const PublicLayout = ({ component: Component, ...rest }) => {

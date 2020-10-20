@@ -1,10 +1,9 @@
 import React from 'react';
 
-const ThumbCount = ({ post, onLikePost }) => {
-  const { likes } = post;
+const ThumbCount = ({ postSeq, likes, onLikePost }) => {
   const handleLikeClick = (e) => {
     e.preventDefault();
-    onLikePost(post.seq);
+    onLikePost(postSeq);
   };
 
   return (

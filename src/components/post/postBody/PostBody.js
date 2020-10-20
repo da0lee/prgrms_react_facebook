@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import css from 'styled-jsx/css';
 import PostInfo from './postInfo/PostInfo';
-import { DateCreated } from '../../../utils/helper';
+import { dateCreated } from '../../../utils/helper';
 
 const PostBody = ({ post, onLikePost }) => {
   const { writer, createAt, contents } = post;
@@ -17,7 +17,7 @@ const PostBody = ({ post, onLikePost }) => {
             {name}
           </Link>
         </h5>
-        <h6 className="card-subtitle text-muted">{DateCreated(createAt)}</h6>
+        <h6 className="card-subtitle text-muted">{dateCreated(createAt)}</h6>
         <p className="card-text">{contents}</p>
         <hr />
         <PostInfo post={post} onLikePost={onLikePost} />

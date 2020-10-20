@@ -1,4 +1,4 @@
-export const DateCreated = (createAt) => {
+export const dateCreated = (createAt) => {
   const now = new Date();
   const timeValue = new Date(createAt);
 

@@ -5,7 +5,7 @@ import { useAutoFormHeight } from '../../../hooks/useAutoFormHeight';
 const CommentForm = ({ seq, onAddComment }) => {
   const [comment, setComment] = useState();
   const RefCommentTextArea = useRef(null);
-  const { handleFormHeightSubmit } = useAutoFormHeight(RefCommentTextArea);
+  const { handleResetSubmit } = useAutoFormHeight(RefCommentTextArea);
 
   const handleCommentsChange = useCallback((e) => {
     setComment(e.target.value);
@@ -15,10 +15,10 @@ const CommentForm = ({ seq, onAddComment }) => {
     (e) => {
       e.preventDefault();
       onAddComment(seq, comment);
-      handleFormHeightSubmit(e);
+      handleResetSubmit(e);
       setComment('');
     },
-    [onAddComment, comment, handleFormHeightSubmit]
+    [onAddComment, comment, handleResetSubmit]
   );
 
   return (
@@ -31,7 +31,6 @@ const CommentForm = ({ seq, onAddComment }) => {
           spellCheck="false"
           value={comment}
           onChange={handleCommentsChange}
-          name="comment"
         />
         <button type="submit" className="btn btn-primary">
           댓글달기

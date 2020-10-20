@@ -5,7 +5,7 @@ import { useAutoFormHeight } from '../../../hooks/useAutoFormHeight';
 const PostForm = ({ onAddPost }) => {
   const [contents, setContents] = useState();
   const RefPostTextArea = useRef(null);
-  const { handleFormHeightSubmit } = useAutoFormHeight(RefPostTextArea);
+  const { handleResetSubmit } = useAutoFormHeight(RefPostTextArea);
 
   const handlePostChange = useCallback((e) => {
     setContents(e.target.value);
@@ -15,7 +15,7 @@ const PostForm = ({ onAddPost }) => {
     (e) => {
       e.preventDefault();
       onAddPost(contents);
-      handleFormHeightSubmit(e);
+      handleResetSubmit(e);
       setContents('');
     },
     [onAddPost, contents]
@@ -31,7 +31,6 @@ const PostForm = ({ onAddPost }) => {
           spellCheck="false"
           value={contents}
           onChange={handlePostChange}
-          name="post"
         />
         <button type="submit" className="btn btn-primary">
           공유하기

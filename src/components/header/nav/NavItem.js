@@ -4,16 +4,10 @@ import css from 'styled-jsx/css';
 import toggle from '../../../hocs/toggle';
 
 const NavItem = ({ to, text, onLogOut }) => {
-  const onLinkClick = (e) => {
-    if (onLogOut) {
-      e.preventDefault();
-      onLogOut();
-    }
-  };
   return (
     <>
       <li className="nav-item">
-        <Link className="nav-link" to={to} onClick={onLinkClick}>
+        <Link className="nav-link" to={to} onClick={onLogOut}>
           {text}
         </Link>
       </li>

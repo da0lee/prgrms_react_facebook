@@ -4,11 +4,11 @@ import ThumbCount from './ThumbCount';
 import CommentCount from './CommentCount';
 
 const PostInfo = ({ post, onLikePost }) => {
-  const { comments } = post;
+  const { seq, likes, comments } = post;
   return (
     <>
       <div className="card-info">
-        <ThumbCount post={post} onLikePost={onLikePost} />
+        <ThumbCount postSeq={seq} likes={likes} onLikePost={onLikePost} />
         <CommentCount comments={comments} />
       </div>
       <style jsx>{StyledPostInfo}</style>
