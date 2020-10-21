@@ -1,6 +1,9 @@
 export const getLocalStorageData = (key) => {
   try {
-    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
+    const value = JSON.parse(localStorage.getItem(key));
+
+    if (typeof value !== 'object') return;
+    return value ? value : [];
   } catch (err) {
     console.log(`Cannot find data from LocalStorage..${err}`);
   }

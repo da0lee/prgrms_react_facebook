@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PostForm from '../components/post/postForm/PostForm';
 import Post from '../components/post/Post';
-import { set } from '../service/postService';
+import { get, set } from '../service/postService';
 
-const Home = ({ user, posts, setPosts }) => {
+const Home = ({ user }) => {
+  const [posts, setPosts] = useState(get());
+
   useEffect(() => {
     set(posts);
   }, [posts]);

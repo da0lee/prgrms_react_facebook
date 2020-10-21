@@ -1,36 +1,69 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { loginAPI } from '../config';
 import SignTitle from '../components/sign/SignTitle';
 import SignForm from '../components/sign/SignForm';
 import SignHelp from '../components/sign/SignHelp';
 import { loginInput } from '../api/LoginInput.json';
 
-const Login = () => {
+const Login = (props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [incorrectId, setIncorrectId] = useState(false);
   const [incorrectPw, setIncorrectPw] = useState(false);
   const [loginErr, setLoginErr] = useState(false);
 
-  const handleIdChange = (e) => {
+  const handleId = (e) => {
     setId(e.target.value);
     setIncorrectId(e.target.value.includes('@') ? false : true);
+  };
+
+  const handlePw = (e) => {
+    console.log(pw);
+    const numbers = /[0-9]/;
+    const spellings = /[a-zA-Z]/;
+
+    if (!numbers.test(pw) || !spellings.test(pw) || pw.length < 8) {
+      setIncorrectPw(true);
+    } else if (numbers.test(pw) && spellings.test(pw) && pw.length >= 8) {
+      setIncorrectPw(false);
+    }
+    setPw(e.target.value);
+  };
+
+  const handleLogin = () => {
+    if (!incorrectId && !incorrectPw) {
+      console.log('로그인에 성공하였습니다.');
+      fetch(loginAPI, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: id,
+          password: pw,
+        }),
+      }).then((res) => {
+        if (!res.ok) {
+          throw new Error();
+        }
+        props.history.push('/');
+        return res.json();
+      });
+    }
   };
 
   return (
     <div className="login container">
       <h1 className="text-center">로그인</h1>
       <form>
+        <input type="email" className="form-control" placeholder="Email" value={id} onChange={handleId} required />
         <input
-          type="email"
+          type="password"
           className="form-control"
-          placeholder="Email"
-          value={id}
-          onChange={handleIdChange}
+          placeholder="Password"
+          value={pw}
+          onChange={handlePw}
           required
         />
-        <input type="password" className="form-control" placeholder="Password" required />
-        <Link className="btn btn-lg btn-primary btn-block" to={'/'}>
+        <Link className="btn btn-lg btn-primary btn-block" to={'/'} onClick={handleLogin}>
           로그인
         </Link>
       </form>

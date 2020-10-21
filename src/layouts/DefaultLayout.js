@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import Header from '../components/header/Header';
-import { get } from '../service/postService';
 
 const DefaultLayout = ({ component: Component }) => {
+  // 나중에 userService로 관리
   const [user, setUser] = useState({
     seq: 0,
     name: 'harry',
@@ -12,15 +12,18 @@ const DefaultLayout = ({ component: Component }) => {
     isLogin: true,
   });
 
-  const [posts, setPosts] = useState(get());
+  // 로그아웃
+  const handleLogOut = () => {
+    setUser(undefined);
+  };
 
   return (
     <Route
       render={(matchProps) => (
         <>
-          <Header user={user} setUser={setUser} />
+          <Header user={user} onLogOut={handleLogOut} />
           <div className="posts container">
-            <Component {...matchProps} user={user} posts={posts} setPosts={setPosts} />
+            <Component {...matchProps} user={user} />
           </div>
 
           <style jsx global>
