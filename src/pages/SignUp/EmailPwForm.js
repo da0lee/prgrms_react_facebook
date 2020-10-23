@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { STEPS } from '../../utils/helper';
-import { valEmail, valPw, valPwCheck } from '../../utils/helper';
+import { valEmail, valPw, valPwCheck, STEPS } from '../../utils/helper';
 
 const EmailPasswordForm = ({ setStep }) => {
   const [email, setEmail] = useState('');
@@ -11,22 +10,19 @@ const EmailPasswordForm = ({ setStep }) => {
   const [errPassword, setErrPassword] = useState(true);
   const [errpasswordCheck, setErrPasswordCheck] = useState(true);
 
-  const refPw = useRef(null);
+  const refPassword = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
       case 'email':
-        console.log(name, email);
         return [setEmail(value), setErrEmail(valEmail(value))];
 
       case 'password':
-        console.log(name, password);
         return [setPassword(value), setErrPassword(valPw(value))];
 
       case 'password-check':
-        console.log(name, passwordCheck);
-        return [setPasswordCheck(value), setErrPasswordCheck(valPwCheck(refPw.current.value, value))];
+        return [setPasswordCheck(value), setErrPasswordCheck(valPwCheck(refPassword.current.value, value))];
 
       default:
         break;
@@ -35,8 +31,13 @@ const EmailPasswordForm = ({ setStep }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStep(STEPS.PROFILE);
+
+    if (errEmail && errPassword && errpasswordCheck) {
+      console.log('가입');
+      setStep(STEPS.PROFILE);
+    }
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-and-err">
@@ -58,7 +59,7 @@ const EmailPasswordForm = ({ setStep }) => {
           name="password"
           value={password}
           onChange={handleChange}
-          ref={refPw}
+          ref={refPassword}
           required
         />
         <span className={errPassword ? 'err' : 'err on'}>영문, 숫자를 포함해 8자리 이상 입력하세요.</span>
