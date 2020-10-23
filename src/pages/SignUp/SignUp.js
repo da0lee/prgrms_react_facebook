@@ -1,17 +1,28 @@
-import React from 'react';
-import SignTitle from '../../components/sign/SignTitle';
-import SignForm from '../../components/sign/SignForm';
-import SignHelp from '../../components/sign/SignHelp';
-import { signUpInput } from '../../api/SignupInput.json';
+import React, { useState } from 'react';
+import EmailPwForm from './EmailPwForm';
+import ProfileForm from './ProfileForm';
+import { STEPS } from '../../utils/helper';
 import { valEmail, valPw, valPwCheck } from '../../utils/helper';
 
 const SignUp = () => {
-  const handleChange = (e) => {};
+  const renderForm = (step, setStep) => {
+    switch (step) {
+      case STEPS.EMAIL_PASSWORD:
+        return <EmailPwForm setStep={setStep} />;
+      case STEPS.PROFILE:
+        return <ProfileForm setStep={setStep} />;
+    }
+  };
+
+  const [step, setStep] = useState(STEPS.EMAIL_PASSWORD);
+
+  // const handleChange = (e) => {};
   return (
     <>
       <div className="signup container">
         <h1 className="text-center">계정 만들기</h1>
         {renderForm(step, setStep)}
+
         <style jsx global>{`
           .signup form {
             max-width: 320px;

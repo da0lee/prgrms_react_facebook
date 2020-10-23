@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { STEPS } from '@/pages/SignUp/helpers';
+import { STEPS } from '../../utils/helper';
 
 const ProfileForm = ({ setStep }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Submitted!');
+    alert('가입 되었습니다.');
   };
 
-  const handleClickGoBack = () => setStep(STEPS.EMAIL_PASSWORD);
+  const handleClickPrev = () => setStep(STEPS.EMAIL_PASSWORD);
 
   return (
     <>
@@ -18,7 +18,7 @@ const ProfileForm = ({ setStep }) => {
         <button className="btn btn-lg btn-primary btn-block" type="submit">
           가입하기
         </button>
-        <button className="btn btn-lg btn-secondary btn-block" type="button" onClick={handleClickGoBack}>
+        <button className="btn btn-lg btn-secondary btn-block" type="button" onClick={handleClickPrev}>
           이전 단계
         </button>
       </form>
