@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { loginAPI } from '../config';
-import SignTitle from '../components/sign/SignTitle';
-import SignForm from '../components/sign/SignForm';
-import SignHelp from '../components/sign/SignHelp';
-import { loginInput } from '../api/LoginInput.json';
+import { valEmail, valPw, valPwCheck } from '../utils/helper';
 
 const Login = (props) => {
   const [id, setId] = useState('');

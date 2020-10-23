@@ -1,3 +1,4 @@
+// Post 작성시간
 export const dateCreated = (createAt) => {
   const now = new Date();
   const timeValue = new Date(createAt);
@@ -19,4 +20,33 @@ export const dateCreated = (createAt) => {
   }
 
   return `${Math.floor(betweenTimeDay / 365)}년 전`;
+};
+
+// 이메일 조건
+export const valEmail = (email) => {
+  if (email.includes('@')) {
+    return true;
+  } else if (email.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// 비밀번호 조건
+export const valPw = (pw) => {
+  const numbers = /[0-9]/;
+  const spellings = /[a-zA-Z]/;
+  if (numbers.test(pw) && spellings.test(pw) && pw.length >= 8) {
+    return true;
+  } else if (pw.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// 비밀번호 확인 조건
+export const valPwCheck = (pw, checkedPw) => {
+  pw === checkedPw ? true : false;
 };
