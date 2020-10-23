@@ -54,5 +54,5 @@ export const valPw = (pw) => {
 
 // 비밀번호 확인 조건
 export const valPwCheck = (pw, checkedPw) => {
-  pw === checkedPw ? true : false;
+  if (pw === checkedPw) return true;
 };

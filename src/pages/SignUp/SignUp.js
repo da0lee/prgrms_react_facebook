@@ -59,7 +59,7 @@ const SignUp = () => {
             bottom: -20px;
             right: 0;
             text-align: right;
-            color: red;
+            color: #3b5999;
           }
           .signup .err.on {
             display: block;
