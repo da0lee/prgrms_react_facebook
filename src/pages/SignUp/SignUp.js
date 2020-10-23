@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import EmailPwForm from './EmailPwForm';
 import ProfileForm from './ProfileForm';
 import { STEPS } from '../../utils/helper';
-import { valEmail, valPw, valPwCheck } from '../../utils/helper';
 
 const SignUp = () => {
   const renderForm = (step, setStep) => {
@@ -33,14 +32,13 @@ const SignUp = () => {
             font-size: 16px;
             height: auto;
             padding: 10px;
-            margin-bottom: 1rem;
           }
           .signup button.btn {
+            margin-top: 25px;
             background-color: #3b5999;
             color: #fffffe;
             font-weight: 800;
             border-color: unset;
-            margin-top: 10px;
           }
           .signup button.btn-secondary {
             background-color: #566888;
@@ -51,6 +49,20 @@ const SignUp = () => {
           .signup .login-here {
             font-weight: 900;
             color: #3a5999;
+          }
+          .input-and-err {
+            position: relative;
+          }
+          .signup .err {
+            display: none;
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            text-align: right;
+            color: red;
+          }
+          .signup .err.on {
+            display: block;
           }
         `}</style>
       </div>

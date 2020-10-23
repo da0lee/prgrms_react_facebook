@@ -28,7 +28,7 @@ const StyledSignForm = css`
     font-size: 16px;
     height: auto;
     padding: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
   }
   :global(button.btn) {
     background-color: #3b5999;
