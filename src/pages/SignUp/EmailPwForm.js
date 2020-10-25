@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { valEmail, valPw, valPwCheck, STEPS } from '../../utils/helper';
 
-const EmailPasswordForm = ({ setStep }) => {
+const EmailPasswordForm = ({ setStep, history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -33,7 +33,6 @@ const EmailPasswordForm = ({ setStep }) => {
     e.preventDefault();
 
     if (errEmail && errPassword && errpasswordCheck) {
-      console.log('가입');
       setStep(STEPS.PROFILE);
     }
   };

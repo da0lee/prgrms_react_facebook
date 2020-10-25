@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import css from 'styled-jsx/css';
 
+const initialUser = {
+  user: {
+    seq: 1,
+    name: 'harry',
+    email: { address: 'harry@gmail.com' },
+    loginCount: 0,
+    lastLoginAt: '2019-12-08T15:23:06.898',
+    createAt: '2019-12-08T13:50:11.776',
+  },
+};
+
 const PublicLayout = ({ component: Component, ...rest }) => {
+  const [user, setUser] = useState(initialUser);
+
   return (
     <>
       <Route
         {...rest}
         render={(matchProps) => (
           <div className="sign form container">
-            <Component {...matchProps} />
+            <Component {...matchProps} user={user} />
           </div>
         )}
       />

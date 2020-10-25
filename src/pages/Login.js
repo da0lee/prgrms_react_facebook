@@ -47,6 +47,27 @@ const Login = (props) => {
     }
   };
 
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   console.log('로그인 버튼 클릭.');
+  //   if (!incorrectId && !incorrectPw) {
+  //     console.log('로그인에 성공하였습니다.');
+  //     fetch(loginAPI, {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         principal: id,
+  //         credentials: pw,
+  //       }),
+  //     }).then((res) => {
+  //       if (!res.ok) {
+  //         throw new Error();
+  //       }
+  //       props.history.push('/');
+  //       return res.data.response;
+  //     });
+  //   }
+  // };
+
   return (
     <div className="login container">
       <h1 className="text-center">로그인</h1>
