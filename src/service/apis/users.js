@@ -1,4 +1,4 @@
-import { configApi } from '../config';
+import { configApi } from './config';
 
 export const api = {
   async getMyFreinds() {
@@ -21,9 +21,15 @@ export const api = {
     }
   },
 
-  async signUp({ email, password, profileImage, name }) {
+  async signUp({ principal, credentials, name, profileImage }) {
+    const formdata = new FormData();
+    formdata.append('credentials', credentials);
+    formdata.append('principal', principal);
+    formdata.append('file', profileImage);
+    formdata.append('name', name);
+
     try {
-      const res = await configApi.post('/api/user/join', { email, password, profileImage, name });
+      const res = await configApi.post('/api/user/join', formdata);
       return res.data.response;
     } catch (e) {
       throw Error(e.message);
