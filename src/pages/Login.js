@@ -1,11 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import apis from '../service/apis/index';
 
 const Login = ({ users, errors, onChangeUsers, history }) => {
+  const handleSubmitSignin = async (e) => {
+    e.preventDefault();
+
+    try {
+      await apis.authApi.signIn({
+        principal: users.email,
+        credentials: String(users.password),
+      });
+      history.push('/');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="sign container">
       <h1 className="text-center">로그인</h1>
-      <form>
+      <form onSubmit={handleSubmitSignin}>
         <div className="input-and-err">
           <input
             className="form-control"
