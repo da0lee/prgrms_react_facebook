@@ -4,6 +4,7 @@ import { DefaultLayout, PublicLayout } from './layouts';
 import { Home, Login, SignUp, UserPostList } from './pages';
 
 const App = () => {
+  console.log(location);
   return (
     <BrowserRouter>
       <Switch>

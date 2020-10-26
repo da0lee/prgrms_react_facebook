@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PostForm from '../components/post/postForm/PostForm';
 import Post from '../components/post/Post';
-import { get, set } from '../service/postService';
 
-const Home = ({ user }) => {
-  const [posts, setPosts] = useState(get());
-
-  useEffect(() => {
-    set(posts);
-  }, [posts]);
-
+const Home = ({ posts, setPosts, user }) => {
   // Post 작성
   const handleAddPost = (contents) => {
     const newPost = {

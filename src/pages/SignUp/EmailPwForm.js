@@ -8,7 +8,6 @@ const EmailPasswordForm = ({ setStep, users, errors, onChangeUsers }) => {
     e.preventDefault();
 
     if (errors.email && errors.password && errors.passwordCheck) {
-      console.log('가입');
       setStep(STEPS.PROFILE);
     }
   };
