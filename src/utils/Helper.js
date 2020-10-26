@@ -56,3 +56,21 @@ export const valPw = (pw) => {
 export const valPwCheck = (pw, checkedPw) => {
   if (pw === checkedPw) return true;
 };
+// Validattion
+export const validate = (name, value, users) => {
+  if (name === 'email') {
+    if (value.length === 0 || value.includes('@')) {
+      return true;
+    }
+  } else if (name === 'password') {
+    const numbers = /[0-9]/;
+    const spellings = /[a-zA-Z]/;
+    if ((numbers.test(value) && spellings.test(value) && value.length >= 8) || value.length === 0) {
+      return true;
+    }
+  } else if (name === 'passwordCheck') {
+    if (users.password === value) return true;
+  } else {
+    return false;
+  }
+};
