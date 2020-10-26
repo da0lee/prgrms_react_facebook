@@ -16,13 +16,21 @@ const initialUser = {
 const PublicLayout = ({ component: Component, ...rest }) => {
   const [user, setUser] = useState(initialUser);
 
+  const handleChangeUser = (e) => {
+    const { name, value } = e.target;
+    setUser((state) => ({
+      ...state,
+      [name]: value,
+    }));
+  };
+
   return (
     <>
       <Route
         {...rest}
         render={(matchProps) => (
           <div className="sign form container">
-            <Component {...matchProps} user={user} />
+            <Component {...matchProps} user={user} handleChangeUser={handleChangeUser} />
           </div>
         )}
       />

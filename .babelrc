@@ -1,4 +1,13 @@
 {
   "presets": ["@babel/preset-react", "@babel/preset-env"],
-  "plugins": ["styled-jsx/babel"]
+  "plugins": [
+    ["styled-jsx/babel", { "optimizeForSpeed": true, "vendorPrefixes": true, "sourceMaps": false }],
+    "@babel/plugin-transform-runtime",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"]
+      }
+    ]
+  ]
 }

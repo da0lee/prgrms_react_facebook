@@ -7,10 +7,10 @@ const defaultProfileImage = 'https://slcp.lk/wp-content/uploads/2020/02/no-profi
 const fileReader = new FileReader();
 
 const SignUp = ({ history }) => {
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
-  const [userName, setUserName] = useState('');
   const [profileImage, setProfileImage] = useState(defaultProfileImage);
 
   const [errEmail, setErrEmail] = useState(true);
@@ -54,25 +54,30 @@ const SignUp = ({ history }) => {
     [fileReader, setProfileImage, profileImage]
   );
 
-  const handleSubmit = (e, email, password, profileImage, name) => {
+  const handleSubmit = async (e) => {
+    console.log(email, password, profileImage, userName);
     e.preventDefault();
-    alert('가입 되었습니다.');
-    history.push('/');
 
     if (errEmail && errPassword && errpasswordCheck) {
-      async (signUp) => {
-        console.log('가입 성공!');
-        try {
-          await apis.usersApi.signUp({
-            principal: email,
-            credentials: password,
-            name,
-            profileImage,
-          });
-        } catch (error) {
-          alert(error.message);
-        }
-      };
+      // apis.usersApi.signUp({
+      //   principal: email,
+      //   credentials: password,
+      //   name,
+      //   profileImage,
+      // });
+
+      try {
+        await apis.usersApi.signUp({
+          principal: email,
+          credentials: password,
+          name: userName,
+          profileImage,
+        });
+        alert('가입 되었습니다.');
+        history.push('/');
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
 
