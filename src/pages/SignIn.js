@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import apis from '../service/apis/index';
 
-const Login = ({ users, errors, onChangeUsers, history }) => {
+const SignIn = ({ users, errors, onChangeUsers, history }) => {
   const handleSubmitSignin = async (e) => {
     e.preventDefault();
 
     try {
-      await apis.authApi.signIn({
+      const res = await apis.authApi.signIn({
         principal: users.email,
         credentials: String(users.password),
       });
+      localStorage.setItem('apiKey', 'Bearer ' + res.apiToken);
       history.push('/');
     } catch (error) {
       alert(error.message);
@@ -58,4 +59,4 @@ const Login = ({ users, errors, onChangeUsers, history }) => {
   );
 };
 
-export default Login;
+export default SignIn;

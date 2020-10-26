@@ -37,8 +37,14 @@ export const api = {
   },
 
   async getMyInfo() {
+    const apiKey = localStorage.getItem('apiKey');
     try {
-      const res = await configApi.get('/api/user/me');
+      const res = await configApi.get('/api/user/me', {
+        headers: {
+          api_key: apiKey,
+        },
+      });
+      console.log('getMyInfo : ', res.data.response);
       return res.data.response;
     } catch (e) {
       throw Error(e.message);

@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { DefaultLayout, PublicLayout } from './layouts';
-import { Home, Login, SignUp, UserPostList } from './pages';
+import { Home, SignIn, SignUp, UserPostList } from './pages';
+import apis from './service/apis';
 
 const App = () => {
-  console.log(location);
+  const [user, setUser] = useState({
+    seq: 0,
+    name: 'harry',
+    profileImageUrl:
+      'https://s3.ap-northeast-2.amazonaws.com/grepp-cloudfront/programmers_imgs/learn/course9872/instructor_harry.png',
+    isLogin: true,
+  });
+
+  const getUser = async () => {
+    try {
+      const result = await apis.usersApi.getMyInfo();
+      setUser(result);
+      return result;
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getUser(user);
+  }, []);
+  console.log('user : ', user);
+
+  // 로그아웃
+  const handleLogOut = () => {
+    setUser(null);
+  };
+
   return (
     <BrowserRouter>
       <Switch>
-        <PublicLayout path="/login" component={Login} />
+        <PublicLayout path="/login" component={SignIn} />
         <PublicLayout path="/signup" component={SignUp} />
         <DefaultLayout path="/u/:name" component={UserPostList} />
-        <DefaultLayout path="/" component={Home} />
+        <DefaultLayout path="/" user={user} component={Home} onLogOut={handleLogOut} />
       </Switch>
       <style jsx global>{`
         * {
