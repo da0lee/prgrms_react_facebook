@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import apis from '../service/apis/index';
 
-const SignIn = ({ users, errors, onChangeUsers, history }) => {
+const SignIn = ({ user, setUser, users, errors, onChangeUsers, history }) => {
   const handleSubmitSignin = async (e) => {
     e.preventDefault();
-
     try {
       const res = await apis.authApi.signIn({
         principal: users.email,
         credentials: String(users.password),
       });
       localStorage.setItem('apiKey', 'Bearer ' + res.apiToken);
+      getUser(user);
       history.push('/');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const getUser = async () => {
+    try {
+      const result = await apis.usersApi.getMyInfo();
+      setUser(result);
+      return result;
     } catch (error) {
       alert(error.message);
     }

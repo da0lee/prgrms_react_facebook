@@ -13,7 +13,7 @@ const PostBody = ({ post, onLikePost }) => {
       <div className="card-body">
         <h5 className="card-title ">
           <Link to={`/u/${name}`} className="user-profile">
-            <img src={profileImageUrl} alt="사용자 프로필사진" />
+            <img src={profileImageUrl} alt="" />
             {name}
           </Link>
         </h5>

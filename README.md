@@ -581,6 +581,36 @@ handleLikePost = (postSeq) => {
 
 https://programmingsummaries.tistory.com/401
 
-Babel은 ES2015+ 문법을 ES5 지원 Browser에서 해석할 수 있도록 변환해주는 트랜스파일러다. 하지만 새롭게 추가된 전역객체들 (지금 여기서는 Promise)는 트랜스파일링 만으로는 해결하기 어렵기 때문에 core-s나 regenerator-rnuntime과 같은 별도의 polyfill이 필요하다.
+Babel은 ES2015+ 문법을 ES5 지원 Browser에서 해석할 수 있도록 변환해주는 트랜스파일러다. 하지만 새롭게 추가된 전역객체들 (지금 여기서는 Axios)는 트랜스파일링 만으로는 해결하기 어렵기 때문에 core-s나 regenerator-rnuntime과 같은 별도의 polyfill이 필요하다.
+
+설치 후 babelrc 수정
+
+> .babelrc
+
+```js
+{
+  "presets": ["@babel/preset-react", "@babel/preset-env"],
+  "plugins": [
+    ["styled-jsx/babel", { "optimizeForSpeed": true, "vendorPrefixes": true, "sourceMaps": false }],
+    "@babel/plugin-transform-runtime",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"]
+      }
+    ]
+  ]
+}
+```
 
 ### yarn add -D yarn babel-plugin-transform-runtime
+
+<br/>
+
+# token
+
+Signin등으로 token이 생성되면 loacalStorage에 저장하여 관리한다.
+
+https://stackoverflow.com/questions/45578844/how-to-set-header-and-options-in-axios
+
+https://velog.io/@cada/%ED%86%A0%EA%B7%BC-%EA%B8%B0%EB%B0%98-%EC%9D%B8%EC%A6%9D%EC%97%90%EC%84%9C-bearer%EB%8A%94-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C

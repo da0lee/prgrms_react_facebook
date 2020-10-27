@@ -44,7 +44,6 @@ export const api = {
           api_key: apiKey,
         },
       });
-      console.log('getMyInfo : ', res.data.response);
       return res.data.response;
     } catch (e) {
       throw Error(e.message);

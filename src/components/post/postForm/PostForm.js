@@ -1,9 +1,11 @@
 import React, { useState, useCallback, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import css from 'styled-jsx/css';
 import { useAutoFormHeight } from '../../../hooks/useAutoFormHeight';
 
-const PostForm = ({ onAddPost }) => {
+const PostForm = ({ onAddPost, user }) => {
   const [contents, setContents] = useState();
+  const history = useHistory();
   const RefPostTextArea = useRef(null);
   const { handleResetSubmit } = useAutoFormHeight(RefPostTextArea);
 
@@ -14,7 +16,7 @@ const PostForm = ({ onAddPost }) => {
   const handlePostSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      onAddPost(contents);
+      user ? [onAddPost(contents)] : [alert('로그인 후 이용해주세요.'), history.push('/login')];
       handleResetSubmit(e);
       setContents('');
     },

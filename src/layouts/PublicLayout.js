@@ -3,18 +3,7 @@ import { Route } from 'react-router-dom';
 import { validate } from '../utils/helper';
 import css from 'styled-jsx/css';
 
-const initialUser = {
-  user: {
-    seq: 1,
-    name: 'harry',
-    email: { address: 'harry@gmail.com' },
-    loginCount: 0,
-    lastLoginAt: '2019-12-08T15:23:06.898',
-    createAt: '2019-12-08T13:50:11.776',
-  },
-};
-
-const PublicLayout = ({ component: Component, ...rest }) => {
+const PublicLayout = ({ component: Component, user, setUser, ...rest }) => {
   const [users, setUsers] = useState({
     email: '',
     password: '',
@@ -67,7 +56,13 @@ const PublicLayout = ({ component: Component, ...rest }) => {
         {...rest}
         render={(matchProps) => (
           <div className="sign form container">
-            <Component {...matchProps} users={users} errors={errors} onChangeUsers={handleChangeUsers} />
+            <Component
+              {...matchProps}
+              users={users}
+              setUser={setUser}
+              errors={errors}
+              onChangeUsers={handleChangeUsers}
+            />
           </div>
         )}
       />
