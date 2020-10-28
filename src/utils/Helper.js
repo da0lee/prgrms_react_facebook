@@ -28,35 +28,7 @@ export const STEPS = {
   PROFILE: 1,
 };
 
-// 이메일 조건
-export const valEmail = (email) => {
-  if (email.includes('@')) {
-    return true;
-  } else if (email.length === 0) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-// 비밀번호 조건
-export const valPw = (pw) => {
-  const numbers = /[0-9]/;
-  const spellings = /[a-zA-Z]/;
-  if (numbers.test(pw) && spellings.test(pw) && pw.length >= 8) {
-    return true;
-  } else if (pw.length === 0) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-// 비밀번호 확인 조건
-export const valPwCheck = (pw, checkedPw) => {
-  if (pw === checkedPw) return true;
-};
-// Validattion
+// Validation
 export const validate = (name, value, users) => {
   if (name === 'email') {
     if (value.length === 0 || value.includes('@')) {

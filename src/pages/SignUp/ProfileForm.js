@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { STEPS } from '../../utils/helper';
 
-const ProfileForm = ({ setStep, users, onChangeUsers, onSubmitUsers, history }) => {
+const ProfileForm = ({ setStep, users, onChangeUsers, onSubmitUsers }) => {
   const { name } = users;
 
   const handleClickPrev = () => setStep(STEPS.EMAIL_PASSWORD);

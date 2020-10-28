@@ -14,6 +14,7 @@ const App = () => {
         <DefaultLayout path="/u/:name" user={user} component={UserPostList} />
         <DefaultLayout path="/" user={user} setUser={setUser} component={Home} />
       </Switch>
+
       <style jsx global>{`
         * {
           box-sizing: border-box;
