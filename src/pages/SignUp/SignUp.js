@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { STEPS } from '../../utils/helper';
+import { STEPS } from './helper';
 import apis from '../../service/apis/index';
 import EmailPwForm from './EmailPwForm';
 import ProfileForm from './ProfileForm';
 
-const SignUp = ({ users, errors, onChangeUsers, history }) => {
-  const handleSubmitUsers = async (e) => {
+const SignUp = ({ userValues, errors, onChangeUserValues, history }) => {
+  const handleSubmitUserValues = async (e) => {
     e.preventDefault();
 
     try {
       await apis.usersApi.signUp({
-        principal: users.email,
-        credentials: users.password,
-        name: users.name,
-        profileImage: users.profileImage,
+        principal: userValues.email,
+        credentials: userValues.password,
+        name: userValues.name,
+        profileImage: userValues.profileImage,
       });
       alert('가입 되었습니다.');
       history.push('/');
@@ -25,15 +25,22 @@ const SignUp = ({ users, errors, onChangeUsers, history }) => {
   const renderForm = () => {
     switch (step) {
       case STEPS.EMAIL_PASSWORD:
-        return <EmailPwForm setStep={setStep} users={users} errors={errors} onChangeUsers={onChangeUsers} />;
+        return (
+          <EmailPwForm
+            setStep={setStep}
+            userValues={userValues}
+            errors={errors}
+            onChangeUserValues={onChangeUserValues}
+          />
+        );
       case STEPS.PROFILE:
         return (
           <ProfileForm
             setStep={setStep}
-            users={users}
+            userValues={userValues}
             errors={errors}
-            onChangeUsers={onChangeUsers}
-            onSubmitUsers={handleSubmitUsers}
+            onChangeUserValues={onChangeUserValues}
+            onSubmitUserValues={handleSubmitUserValues}
             history={history}
           />
         );

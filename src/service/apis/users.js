@@ -1,9 +1,9 @@
-import { configApi } from './config';
+import { defaultApi } from './default';
 
 export const api = {
   async getMyFreinds() {
     try {
-      const res = await configApi.get('/api/user/commections');
+      const res = await defaultApi.get('/api/user/commections');
       return res.data.response;
     } catch (e) {
       throw Error(e.message);
@@ -12,7 +12,7 @@ export const api = {
 
   async checkEmailExistence({ address }) {
     try {
-      const res = await configApi.post('/api/user/exists', {
+      const res = await defaultApi.post('/api/user/exists', {
         address,
       });
       return res.data.response;
@@ -29,7 +29,7 @@ export const api = {
     formdata.append('name', name);
 
     try {
-      const res = await configApi.post('/api/user/join', formdata);
+      const res = await defaultApi.post('/api/user/join', formdata);
       return res.data.response;
     } catch (e) {
       throw Error(e.message);
@@ -39,7 +39,7 @@ export const api = {
   async getMyInfo() {
     const apiKey = localStorage.getItem('apiKey');
     try {
-      const res = await configApi.get('/api/user/me', {
+      const res = await defaultApi.get('/api/user/me', {
         headers: {
           api_key: apiKey,
         },

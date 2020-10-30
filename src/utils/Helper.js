@@ -22,12 +22,6 @@ export const dateCreated = (createAt) => {
   return `${Math.floor(betweenTimeDay / 365)}년 전`;
 };
 
-// STEPS
-export const STEPS = {
-  EMAIL_PASSWORD: 0,
-  PROFILE: 1,
-};
-
 // Validation
 export const validate = (name, value, users) => {
   if (name === 'email') {

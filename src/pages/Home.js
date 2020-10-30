@@ -55,8 +55,8 @@ const Home = ({ posts, setPosts, user }) => {
   return (
     <>
       <PostForm posts={posts} onAddPost={handleAddPost} user={user} />
-      {posts.map((post) => (
-        <Post key={post.seq} post={post} onAddComment={handleAddComment} onLikePost={handleLikePost} />
+      {posts.map((post, index) => (
+        <Post key={post.seq} post={post} index={index} onAddComment={handleAddComment} onLikePost={handleLikePost} />
       ))}
     </>
   );

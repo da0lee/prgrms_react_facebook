@@ -4,7 +4,7 @@ import { validate } from '../utils/helper';
 import css from 'styled-jsx/css';
 
 const PublicLayout = ({ component: Component, user, setUser, ...rest }) => {
-  const [users, setUsers] = useState({
+  const [userValues, setUserValues] = useState({
     email: '',
     password: '',
     passwordCheck: '',
@@ -18,9 +18,9 @@ const PublicLayout = ({ component: Component, user, setUser, ...rest }) => {
     passwordCheck: true,
   });
 
-  const handleChangeUsers = (e) => {
+  const handleChangeUservalues = (e) => {
     const { name, value } = e.target;
-    const isTrue = validate(name, value, users);
+    const isTrue = validate(name, value, userValues);
 
     setErrors((prevState) => ({
       ...prevState,
@@ -36,14 +36,14 @@ const PublicLayout = ({ component: Component, user, setUser, ...rest }) => {
         throw new Error('이미지 파일만 업로드해주세요');
       }
       fileReader.onload = ({ target }) => {
-        setUsers((prevState) => ({
+        setUserValues((prevState) => ({
           ...prevState,
           [name]: target.result,
         }));
       };
       // fileReader.readAsDataURL(file);
     } else {
-      setUsers((prevState) => ({
+      setUserValues((prevState) => ({
         ...prevState,
         [name]: value,
       }));
@@ -58,10 +58,10 @@ const PublicLayout = ({ component: Component, user, setUser, ...rest }) => {
           <div className="sign form container">
             <Component
               {...matchProps}
-              users={users}
+              userValues={userValues}
               setUser={setUser}
               errors={errors}
-              onChangeUsers={handleChangeUsers}
+              onChangeUserValues={handleChangeUservalues}
             />
           </div>
         )}

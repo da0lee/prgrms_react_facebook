@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const configApi = axios.create({
+export const defaultApi = axios.create({
   baseURL: 'http://15.164.170.69:8080',
 });

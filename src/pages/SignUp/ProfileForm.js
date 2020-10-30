@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { STEPS } from '../../utils/helper';
+import { STEPS } from './helper';
 
-const ProfileForm = ({ setStep, users, onChangeUsers, onSubmitUsers }) => {
-  const { name } = users;
+const ProfileForm = ({ setStep, userValues, onChangeUserValues, onSubmitUserValues }) => {
+  const { name } = userValues;
 
   const handleClickPrev = () => setStep(STEPS.EMAIL_PASSWORD);
 
   return (
     <>
-      <form onSubmit={onSubmitUsers}>
+      <form onSubmit={onSubmitUserValues}>
         <input
           type="text"
           className="form-control"
@@ -17,14 +17,14 @@ const ProfileForm = ({ setStep, users, onChangeUsers, onSubmitUsers }) => {
           value={name}
           placeholder="이름"
           required
-          onChange={onChangeUsers}
+          onChange={onChangeUserValues}
         />
         <input
           type="file"
           className="form-control"
           name="profileImage"
           placeholder="Profile"
-          onChange={onChangeUsers}
+          onChange={onChangeUserValues}
         />
         <button className="btn btn-lg btn-primary btn-block" type="submit">
           가입하기

@@ -9,7 +9,7 @@ const Nav = ({ user, onLogOut }) => {
         <NavItem to="/login" text="로그인" show={!user} />
         <NavItem to="/signup" text="회원가입" show={!user} />
         <Profile user={user} show={user} />
-        <NavItem to="/logout" text="로그아웃" show={user} onLogOut={onLogOut} />
+        <NavItem to="/login" text="로그아웃" show={user} onLogOut={onLogOut} />
       </ul>
     </>
   );

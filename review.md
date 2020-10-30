@@ -5,24 +5,21 @@
 > service > apis > config
 
 - Q apis -> config라는 이름 어떤지
+<!-- defualtApi , axios -->
 
 <br/>
 
 > service > apis > postService
 
 - Q get / set 함수명
-
-<br/>
-
-> service > apis > storage
-
-- Q getLocalStorageData / setLocalStorageData 함수명
+<!-- crud 명칭, insertPost -->
 
 <br/>
 
 > utils > helper.js
 
 - Q post 작성시간, steps, Validation 관리
+<!-- steps는 사용하고 있는 해당 pages의 폴더로 분리 -->
 
 <br/>
 
@@ -69,6 +66,8 @@ const handleLogOut = async () => {
 };
 ```
 
+    // 토큰 지우고, 통신은 필요없음
+
 <br/>
 
 > pages > Home.js
@@ -112,7 +111,7 @@ const getUser = async () => {
   try {
     // server에서 token값 전달해 내 정보 받아오는 로직인 getMyInfo() 실행
     const result = await apis.usersApi.getMyInfo();
-    // 받아오느 결과값으로 user state 변경
+    // 받아오는 결과값으로 user state 변경
     setUser(result);
     return result;
   } catch (error) {

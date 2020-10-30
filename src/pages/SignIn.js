@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import apis from '../service/apis/index';
 
-const SignIn = ({ user, setUser, users, errors, onChangeUsers, history }) => {
+const SignIn = ({ user, setUser, userValues, errors, onChangeUserValues, history }) => {
   const handleSubmitSignin = async (e) => {
     e.preventDefault();
     try {
       const res = await apis.authApi.signIn({
-        principal: users.email,
-        credentials: String(users.password),
+        principal: userValues.email,
+        credentials: String(userValues.password),
       });
       localStorage.setItem('apiKey', 'Bearer ' + res.apiToken);
       getUser(user);
@@ -37,8 +37,8 @@ const SignIn = ({ user, setUser, users, errors, onChangeUsers, history }) => {
             className="form-control"
             placeholder="이메일"
             name="email"
-            value={users.email}
-            onChange={onChangeUsers}
+            value={userValues.email}
+            onChange={onChangeUserValues}
             required
           />
           <span className={errors.email ? 'err' : 'err on'}>이메일 형식으로 입력해주세요.</span>
@@ -49,8 +49,8 @@ const SignIn = ({ user, setUser, users, errors, onChangeUsers, history }) => {
             className="form-control"
             placeholder="비밀번호"
             name="password"
-            value={users.password}
-            onChange={onChangeUsers}
+            value={userValues.password}
+            onChange={onChangeUserValues}
             required
           />
           <span className={errors.password ? 'err' : 'err on'}>영문, 숫자를 포함해 8자리 이상 입력하세요.</span>
